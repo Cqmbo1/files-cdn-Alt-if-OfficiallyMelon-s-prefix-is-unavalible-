@@ -346,6 +346,8 @@ placeUnderPlayer:
             
                     // Handle rotation or block placement type (if applicable)
                     '//
+
+                    
                     if (null === s.m[o].meta.rot && null === s.m[o].meta.halfblockPlacement || (o = this.getPlaceBlockRotatedId(o, U, m, C)),
                     (0, h.b)().playerCanPlaceItem(this.noa.playerEntity, U, m, C, o)) {
                         var W;
