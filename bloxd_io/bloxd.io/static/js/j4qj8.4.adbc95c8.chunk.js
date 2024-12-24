@@ -3467,7 +3467,9 @@
                 const i = DY().create();
                 Y.onMessage(O.k, (Y => {
                     let {damageAmount: P, dir: q, sprinted: u, scalar: s, redVert: O} = Y;
-                    e.addCameraShake(P / 40);
+                    if (!window.camshake) {
+                        e.addCameraShake(P / 40);
+                    }
                     const r = X.ents.getMovement(X.playerEntity);
                     r.isGliding && (r.hitWhilstGliding = !0),
                     r.isFloating && (r.hitWhilstFloating = !0);
@@ -3489,8 +3491,11 @@
                     W[0] *= a,
                     W[2] *= a;
                     const C = 15 * (u ? 1.2 : 1) * (.9 + .2 * Math.random()) * s * (S ? .5 : 1) * L.mass;
-                    W[1] *= C,
-                    L.applyImpulse(W)
+                    W[1] *= C;
+
+                    if (!window.antiknock) {
+                        L.applyImpulse(W)
+                    }
                 }
                 )),
                 Y.onMessage(O.J, (Y => {
@@ -7358,10 +7363,30 @@
                 system: function(P, X) {
                     for (const P of X) {
                         const X = P.__id;
-                        Y.ents.getPhysicsBody(X).preventFallOffEdge && !P._preventFallOffLastTick && (0,
-                        q.Qb)(),
-                        Y.ents.getPhysicsBody(X).preventFallOffEdge = Y.ents.getMoveState(X).crouching,
-                        P._preventFallOffLastTick = Y.ents.getMoveState(X).crouching
+                        //''
+                        const physicsBody = Y.ents.getPhysicsBody(X);
+                        const moveState = Y.ents.getMoveState(X);
+                        if (!window.preventfalloff) {
+                            if (physicsBody.preventFallOffEdge && !P._preventFallOffLastTick) {
+                                (0, s.ac)();
+                            }
+        
+                            physicsBody.preventFallOffEdge = moveState.crouching;
+                            P._preventFallOffLastTick = moveState.crouching;
+                        } else {
+                            physicsBody.preventFallOffEdge = true;
+                            P._preventFallOffLastTick = true;
+                        }
+                        //''/
+
+                        //' to define States and Bodies:
+                        // const physicsBody = >>U<<.ents.getPhysicsBody(>>>O<<<);
+                        // const moveState = >>U<<.ents.getMoveState(>>>O<<<);
+                        // get vars from: onAdd: function(>>Y<<, P) {}  & for (const P of >>>X<<<) 
+                        // 1st var: '>><<'; 2nd: '>>><<<'
+
+                        //' to find vars for toggle preventfalloff/secureEdge: 
+
                     }
                 }
             }
@@ -8839,7 +8864,7 @@
             tryHitEntity() {
                 var Y;
                 const P = null !== (Y = this.noa.actionDirection) && void 0 !== Y ? Y : this.noa.camera.getDirection()
-                  , {hitResult: X, hitEId: q, distanceTravelled: u, globalHitPosition: s, hitNormal: e, meshNodeHit: O} = this.pickActionHelper.doPickAction(P, 3);
+                  , {hitResult: X, hitEId: q, distanceTravelled: u, globalHitPosition: s, hitNormal: e, meshNodeHit: O} = this.pickActionHelper.doPickAction(P, 3 * (window.reach || 1));
                 return X === S.c.HIT_ENTITY ? {
                     pickDir: P,
                     hitEId: q,
@@ -8850,6 +8875,7 @@
                     meshNodeHit: null
                 }
             }
+            //' to find reach data go to first: tryHitEntity() { '//
             breakEntity(Y, P) {
                 var X, q, s;
                 const e = this.noa;
@@ -8870,6 +8896,13 @@
                 this.anyBreakingStartTime = Date.now()
             }
             tick() {
+                if (window.autoclick) {
+                    const {pickDir: Y, hitEId: P, meshNodeHit: X} = this.tryHitEntity();
+                    if (m) {
+                        this.doAttack(Y, P, X);
+                        this.breakEntity(Y, P);
+                    }
+                }
                 if (this.heldItemState.__id === this.noa.playerEntity) {
                     let Y = !1;
                     return this.breaking && (Y = this.breakBlock()),
@@ -8878,6 +8911,7 @@
                 }
                 return !1
             }
+            //'To find: pickDir: (), hitEId: (), meshNodeHit: () :  go to 2nd: downFirePrimary() { '//
             upFirePrimary() {
                 return super.upFirePrimary(),
                 this.resetTargetedBlock(),
@@ -9065,6 +9099,12 @@
                 return Y || (this.placeBlock(),
                 !0)
             }
+            tick() {
+                if (window.scaffold) {
+                    this.placeUnderPlayer()
+                }
+            }
+            //'Scaffold'//
             placeBlock() {
                 var Y;
                 const P = this.noa.targetedBlock;
