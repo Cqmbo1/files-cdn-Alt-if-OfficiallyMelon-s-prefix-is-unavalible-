@@ -1,0 +1,10 @@
+SecureEdge/Prevent Falloff:
+
+// to find from non-modified js: search: ').preventFallOffEdge'
+
+                        //' to define States and Bodies:
+                        // const physicsBody = U.ents.getPhysicsBody(O);
+                        // const moveState = U.ents.getMoveState(O);
+                        // get vars from: onAdd: function(>>Y<<, P) {}
+
+                        //' to find var
