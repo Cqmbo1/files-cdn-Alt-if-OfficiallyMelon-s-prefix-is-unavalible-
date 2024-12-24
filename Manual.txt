@@ -177,3 +177,64 @@ Reach:
                     }
                 }
 
+
+AutoClick:
+
+    //  In file where Reach is (or: 2 functions under Reach, or: between breakingStart & upFirePrimary() {, OR (most accurate; above:
+
+                upFirePrimary() {
+                return super.upFirePrimary(),
+
+    )) add:
+
+            tick() {
+                if (window.autoclick) {
+                    const {pickDir: Y, hitEId: P, meshNodeHit: X} = this.tryHitEntity();
+                    if (m) {
+                        this.doAttack(Y, P, X);
+                        this.breakEntity(Y, P);
+                    }
+                }
+                if (this.heldItemState.__id === this.noa.playerEntity) {
+                    let Y = !1;
+                    return this.breaking && (Y = this.breakBlock()),
+                    this.breakingParticles.tick(Y),
+                    Y
+                }
+                return !1
+            }
+            // To find: pickDir: (), hitEId: (), meshNodeHit: () :  go to 2nd: downFirePrimary() { 
+
+    Raw example:
+
+        before:
+
+            upFirePrimary() {
+                return super.upFirePrimary(),
+                this.breakingItem.upFirePrimary()
+            }
+
+        after:
+
+            tick() {
+                if (window.autoclick) {
+                    const {pickDir: Y, hitEId: P, meshNodeHit: X} = this.tryHitEntity();
+                    if (m) {
+                        this.doAttack(Y, P, X);
+                        this.breakEntity(Y, P);
+                    }
+                }
+                if (this.heldItemState.__id === this.noa.playerEntity) {
+                    let Y = !1;
+                    return this.breaking && (Y = this.breakBlock()),
+                    this.breakingParticles.tick(Y),
+                    Y
+                }
+                return !1
+            }
+            //' To find: pickDir: (), hitEId: (), meshNodeHit: () :  go to 2nd: downFirePrimary() { '// 
+
+            upFirePrimary() {
+                return super.upFirePrimary(),
+                this.breakingItem.upFirePrimary()
+            }
