@@ -241,26 +241,26 @@ AutoClick:
 
 Scaffold:
 
-// Find: placeBlock() { (which should be in a "class...extends..."")
+// Find: placeUnderPlayer() { (which should be in a "class...extends..."")
 
 // then add:
 
             tick() {
                 if (window.scaffold) {
-                    this.placeBlock()
+                    this.placeUnderPlayer()
                 }
             }
             //'Scaffold'//
 
 
-        above placeBlock() {
+        above placeUnderPlayer() {
 
 
         raw example:
 
         before:
 
-            placeBlock() {
+            placeUnderPlayer() {
                 var Y;
                 const P = this.noa.targetedBlock;
                 let X;
@@ -271,11 +271,11 @@ Scaffold:
 
             tick() {
                 if (window.scaffold) {
-                    this.placeBlock()
+                    this.placeUnderPlayer()
                 }
             }
             //'Scaffold'//
-            placeBlock() {
+            placeUnderPlayer() {
                 var Y;
                 const P = this.noa.targetedBlock;
                 let X;
