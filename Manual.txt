@@ -238,3 +238,45 @@ AutoClick:
                 return super.upFirePrimary(),
                 this.breakingItem.upFirePrimary()
             }
+
+Scaffold:
+
+// Find: placeBlock() { (which should be in a "class...extends..."")
+
+// then add:
+
+            tick() {
+                if (window.scaffold) {
+                    this.placeUnderPlayer()
+                }
+            }
+            //'Scaffold'//
+
+    above placeBlock() {
+
+
+        raw example:
+
+        before:
+
+            placeBlock() {
+                var Y;
+                const P = this.noa.targetedBlock;
+                let X;
+            
+            ......
+
+        after:
+
+            tick() {
+                if (window.scaffold) {
+                    this.placeUnderPlayer()
+                }
+            }
+            //'Scaffold'//
+            placeBlock() {
+                var Y;
+                const P = this.noa.targetedBlock;
+                let X;
+            
+            ......
