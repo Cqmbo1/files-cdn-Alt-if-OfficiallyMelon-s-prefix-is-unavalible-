@@ -321,3 +321,67 @@ High Jump:
     After:
 
     s.applyImpulse([0, Y.serverSettings.jumpAmount + ((typeof window.JumpAmount === 'number' && !isNaN(window.JumpAmount)) ? window.JumpAmount : 0) * q.jumpMultiplier.getTotalMultipliedVal(), 0]),
+
+
+Speed:
+
+    Find: 10th: ".vehicle.tier";
+    Then 2 lines under OR under ".jump;" add:
+
+    Object.defineProperty(window, 'GlobalSpeed', {
+                get: function () {
+                    return this._globalSpeed;
+                },
+                set: function (value) {
+                    this._globalSpeed = value;
+                    >>r<<.walkingSpeed = value;
+                },
+                configurable: true
+            });
+        
+            if (typeof window._globalSpeed === 'undefined') {
+                window._globalSpeed = >>r<<.walkingSpeed;
+            }
+    Note: 1st var is in >><< & you can obtain it from: const {serverSettings: >>r<<} = Y
+
+    //Raw Example:
+
+    //Before:
+
+        const {serverSettings: r} = Y
+              , L = u.d[X.vehicle.type]
+              , W = q.u[X.vehicle.type].getValues(X.vehicle.tier);
+            P.jumping = !!e.jump;
+        
+
+        const c = e.forward ? e.backward ? 0 : 1 : e.backward ? -1 : 0
+            , S = e.right ? e.left ? 0 : 1 : e.left ? -1 : 0;
+            s.e.clientEscMenuOptions.crouchIsToggle ? P.crouching = O.crouchToggled : (e.crouch ? P.crouching = !0 : P.crouching = !1,
+            O.crouchToggled = !1);
+            const a = L.isMoving ? L.isMoving(S, c, X) : c || S;
+
+    //After:
+
+        const {serverSettings: r} = Y
+              , L = u.d[X.vehicle.type]
+              , W = q.u[X.vehicle.type].getValues(X.vehicle.tier);
+            P.jumping = !!e.jump;
+            Object.defineProperty(window, 'GlobalSpeed', {
+                get: function () {
+                    return this._globalSpeed;
+                },
+                set: function (value) {
+                    this._globalSpeed = value;
+                    r.walkingSpeed = value;
+                },
+                configurable: true
+            });
+        
+            if (typeof window._globalSpeed === 'undefined') {
+                window._globalSpeed = r.walkingSpeed;
+            }
+            const c = e.forward ? e.backward ? 0 : 1 : e.backward ? -1 : 0
+              , S = e.right ? e.left ? 0 : 1 : e.left ? -1 : 0;
+            s.e.clientEscMenuOptions.crouchIsToggle ? P.crouching = O.crouchToggled : (e.crouch ? P.crouching = !0 : P.crouching = !1,
+            O.crouchToggled = !1);
+            const a = L.isMoving ? L.isMoving(S, c, X) : c || S;
