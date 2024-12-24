@@ -7386,7 +7386,6 @@
                         // 1st var: '>><<'; 2nd: '>>><<<'
 
                         //' to find vars for toggle preventfalloff/secureEdge: 
-                        
 
                     }
                 }
@@ -10919,7 +10918,7 @@
             X.lastBlockStandingOnWasIce = !1) : (X.lastBlockStandingOnWasIce = X.isOnIce,
             X.inAirFromWater = !1);
             const b = (G || X._jumpCount < function(Y, P, X) {
-                const q = window.AirJump;
+                const q = Y.serverSettings.airJumpCount;
                 if (X)
                     return q + 1;
                 return q
@@ -10941,7 +10940,7 @@
                     }
                 } else
                     b && (X._isJumping = !0,
-                    s.applyImpulse([0, Y.serverSettings.jumpAmount + ((typeof window.JumpAmount === 'number' && !isNaN(window.JumpAmount)) ? window.JumpAmount : 0) * q.jumpMultiplier.getTotalMultipliedVal(), 0]),
+                    s.applyImpulse([0, Y.serverSettings.jumpAmount * q.jumpMultiplier.getTotalMultipliedVal(), 0]),
                     X._currJumpTime = X.jumpTime,
                     G ? X.onGroundPrevTick || X._hadJumpInputPrevTick || !q.speed || a.e.clientEscMenuOptions.disableBunnyHopping ? n(q, X, 0) : n(q, X, X._bhopCount + 1) : (X._jumpCount++,
                     s.velocity[1] < 0 && (s.velocity[1] = 0)));
