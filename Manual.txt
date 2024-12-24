@@ -83,4 +83,26 @@ Anti-Knock:
             L.applyImpulse(W)
         }
 
+Anti-CamShake:
 
+   //Find:
+
+   .addCameraShake(
+
+    // & wrap around with:
+
+    if (!window.camshake) {
+    }
+
+        raw example;
+
+
+        // replace:
+
+        e.addCameraShake(P / 40);
+                    
+        // with:
+
+        if (!window.camshake) {
+        e.addCameraShake(P / 40);
+        }
