@@ -123,7 +123,7 @@ Reach:
             tryHitEntity() {
                 var Y;
                 const >>P<< = null !== (Y = this.noa.actionDirection) && void 0 !== Y ? Y : this.noa.camera.getDirection()
-                  , {hitResult: X, hitEId: q, distanceTravelled: u, globalHitPosition: s, hitNormal: e, meshNodeHit: O} = this.pickActionHelper.doPickAction(P, 3 * (window.reach || 1));
+                  , {hitResult: X, hitEId: q, distanceTravelled: u, globalHitPosition: s, hitNormal: e, meshNodeHit: O} = this.pickActionHelper.doPickAction(P, 3);
                 return X === S.c.HIT_ENTITY ? {
                     pickDir: P,
                     hitEId: q,
@@ -140,3 +140,40 @@ Reach:
         add " * (window.reach || 1)" to 3 to form:
 
         (var, 3 * (window.reach || 1));
+
+        raw example:
+
+        before:
+
+            tryHitEntity() {
+                    var Y;
+                    const P = null !== (Y = this.noa.actionDirection) && void 0 !== Y ? Y : this.noa.camera.getDirection()
+                    , {hitResult: X, hitEId: q, distanceTravelled: u, globalHitPosition: s, hitNormal: e, meshNodeHit: O} = this.pickActionHelper.doPickAction(P, 3);
+                    return X === S.c.HIT_ENTITY ? {
+                        pickDir: P,
+                        hitEId: q,
+                        meshNodeHit: O
+                    } : {
+                        pickDir: P,
+                        hitEId: null,
+                        meshNodeHit: null
+                    }
+                }
+
+        to:
+
+            tryHitEntity() {
+                    var Y;
+                    const P = null !== (Y = this.noa.actionDirection) && void 0 !== Y ? Y : this.noa.camera.getDirection()
+                    , {hitResult: X, hitEId: q, distanceTravelled: u, globalHitPosition: s, hitNormal: e, meshNodeHit: O} = this.pickActionHelper.doPickAction(P, 3 * (window.reach || 1));
+                    return X === S.c.HIT_ENTITY ? {
+                        pickDir: P,
+                        hitEId: q,
+                        meshNodeHit: O
+                    } : {
+                        pickDir: P,
+                        hitEId: null,
+                        meshNodeHit: null
+                    }
+                }
+
