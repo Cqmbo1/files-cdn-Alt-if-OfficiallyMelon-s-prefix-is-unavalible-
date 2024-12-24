@@ -305,3 +305,7 @@ Infinite Jump:
                 return q
             }(Y, X.__id, c))
 
+High Jump:
+
+    find: line with: ".jumpMultiplier.getTotalMultipliedVal()" 
+
