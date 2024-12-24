@@ -241,6 +241,77 @@ AutoClick:
 
 Scaffold:
 
+Copy placeBlock and turn into placeUnderPlayer:
+
+1st var: >><<
+2nd var: >>><<<
+3rd var: >>>><<<<
+4th var: >>>>><<<<<
+
+raw example:
+
+placeBlock:
+
+            placeBlock() {
+                var U;
+                const m = this.noa.targetedBlock;
+                let o;
+                this.noa.serverSettings && (o = s.m[this.noa.serverSettings.defaultBlock].id);
+                const n = this.noa.ents.hasComponent(this.noa.playerEntity, this.noa.ents.names.inventory);
+                if (n) {
+                    o = null;
+                    const U = this.noa.ents.getInventoryState(this.noa.playerEntity).selectedItem;
+                    !U || "CubeBlock" !== U.typeObj.type && "TwoDBlock" !== U.typeObj.type && "SlabBlock" !== U.typeObj.type || (o = U.typeObj.id)
+                }
+                let K = null === (U = this.noa.targetedBlock) || void 0 === U ? void 0 : U.adjacent;
+                if (this.noa.targetedBlock && ( () => {
+                    var U;
+                    const m = this.noa.targetedBlock.position
+                      , o = this.noa.getBlock(m);
+                    return null !== (U = y.blockMetadata[o].canBePlacedOver) && void 0 !== U && U
+                }
+                )() && (K = this.noa.targetedBlock.position),
+                o && this.noa.targetedBlock && ((0,
+                h.b)().posSatisfiesModifyConstraints(this.noa.playerEntity, K[0], K[1], K[2]) || "Moonstone Explosive" === (0,
+                h.b)().getItemName(o))) {
+                    const [U,m,C] = K;
+                    if (null === s.m[o].meta.rot && null === s.m[o].meta.halfblockPlacement || (o = this.getPlaceBlockRotatedId(o, U, m, C)),
+                    (0,
+                    h.b)().playerCanPlaceItem(this.noa.playerEntity, U, m, C, o)) {
+                        var W;
+                        const H = this.noa.getBlock([U, m, C]);
+                        if ((0 === H || y.blockMetadata[H].fluid || null !== (W = y.blockMetadata[H]) && void 0 !== W && W.canBePlacedOver) && o !== H) {
+                            this.noa.ents.getMoveState(this.heldItemState.__id).setArmsAreSwinging();
+                            const U = Q().copy([], K);
+                            if (function(U, m) {
+                                (0,
+                                p.Wb)(k.je, {
+                                    pos: U,
+                                    toBlock: m,
+                                    checker: I.e
+                                }, !0)
+                            }(U, o),
+                            (0,
+                            h.b)().setBlock(U[0], U[1], U[2], o),
+                            (0,
+                            s.o)(o, !1),
+                            n && !this.noa.serverSettings.creative) {
+                                const U = this.noa.ents.getInventoryState(this.noa.playerEntity);
+                                U.inventory.removeItem(U.inventory.getSelectedSlotIndex(), 1)
+                            }
+                            "Board" === this.bloxd.getMetaInfo(o).rootName && f.f.publish("EditBoard", {
+                                pos: U
+                            })
+                        }
+                    }
+                } else
+                    this.noa.targetedBlock && !(0,
+                    h.b)().posSatisfiesModifyConstraints(this.noa.playerEntity, m.adjacent[0], m.adjacent[1], m.adjacent[2]) && (this.noa.serverSettings.canChange || this.noa.serverSettings.cantChangeError || "You cannot modify this block" !== this.noa.serverSettings.cantChangeError) && f.f.publish("showError", {
+                        error: this.noa.serverSettings.cantBuildError || this.noa.serverSettings.cantChangeError
+                    })
+            }
+
+
 // Find: placeBlock() { (which should be in a "class...extends..."")
 
 // then add:
@@ -252,6 +323,7 @@ Scaffold:
             }
             //'Scaffold'//
 
+            modified placeBlock -> placeUnderPlayer
 
         above placeBlock() {
 
