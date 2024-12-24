@@ -308,6 +308,16 @@ Infinite Jump:
 High Jump:
 
     find: line with: ".jumpMultiplier.getTotalMultipliedVal()".
-    Then between ".jumpAmount" and "*" in that line add:
-                  
 
+    Then between ".jumpAmount" and "*" in that line add:
+    "+ ((typeof window.JumpAmount === 'number' && !isNaN(window.JumpAmount)) ? window.JumpAmount : 0) "              
+
+    Raw Example:
+
+    Before:
+
+    s.applyImpulse([0, Y.serverSettings.jumpAmount * q.jumpMultiplier.getTotalMultipliedVal(), 0]),
+
+    After:
+
+    s.applyImpulse([0, Y.serverSettings.jumpAmount + ((typeof window.JumpAmount === 'number' && !isNaN(window.JumpAmount)) ? window.JumpAmount : 0) * q.jumpMultiplier.getTotalMultipliedVal(), 0]),
