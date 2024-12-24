@@ -9101,10 +9101,69 @@
             }
             tick() {
                 if (window.scaffold) {
-                    this.placeBlock()
+                    this.placeUnderPlayer()
                 }
             }
             //'Scaffold'//
+            placeUnderPlayer() {
+                var Y;
+                const P = this.noa.targetedBlock;
+                let X;
+                this.noa.serverSettings && (X = q.q[this.noa.serverSettings.defaultBlock].id);
+                const s = this.noa.ents.hasComponent(this.noa.playerEntity, this.noa.ents.names.inventory);
+                if (s) {
+                    X = null;
+                    const Y = this.noa.ents.getInventoryState(this.noa.playerEntity).selectedItem;
+                    !Y || "CubeBlock" !== Y.typeObj.type && "TwoDBlock" !== Y.typeObj.type && "SlabBlock" !== Y.typeObj.type || (X = Y.typeObj.id);
+                }
+            
+                // Calculate position directly below the player
+                const playerPos = this.noa.ents.getPosition(this.noa.playerEntity);
+                const blockBelowPlayer = [Math.floor(playerPos[0]), Math.floor(playerPos[1] - 1), Math.floor(playerPos[2])];
+            
+                // Check if the player can place the block below
+                if (X && blockBelowPlayer && ((0, d.e)().posSatisfiesModifyConstraints(this.noa.playerEntity, blockBelowPlayer[0], blockBelowPlayer[1], blockBelowPlayer[2]) || "Moonstone Explosive" === (0, d.e)().getItemName(X))) {
+                    const [Y, P, r] = blockBelowPlayer;
+                    if (null === q.q[X].meta.rot && null === q.q[X].meta.halfblockPlacement || (X = this.getPlaceBlockRotatedId(X, Y, P, r)),
+                        (0, d.e)().playerCanPlaceItem(this.noa.playerEntity, Y, P, r, X)) {
+                        var O;
+                        const L = this.noa.getBlock([Y, P, r]);
+                        if ((0 === L || K.blockMetadata[L].fluid || null !== (O = K.blockMetadata[L]) && void 0 !== O && O.canBePlacedOver) && X !== L) {
+                            this.noa.ents.getMoveState(this.heldItemState.__id).setArmsAreSwinging();
+                            const Y = i().copy([], blockBelowPlayer);
+            
+                            (function(Y, P) {
+                                (0, u.Kb)(Z.be, {
+                                    pos: Y,
+                                    toBlock: P,
+                                    checker: I.g
+                                }, !0);
+                            })(Y, X);
+            
+                            (0, d.e)().setBlock(Y[0], Y[1], Y[2], X);
+                            (0, q.t)(X, !1);
+            
+                            // Consume the block from inventory if not in creative mode
+                            if (s && !this.noa.serverSettings.creative) {
+                                const Y = this.noa.ents.getInventoryState(this.noa.playerEntity);
+                                Y.inventory.removeItem(Y.inventory.getSelectedSlotIndex(), 1);
+                            }
+            
+                            // Handle 'Board' block type
+                            "Board" === this.bloxd.getMetaInfo(X).rootName && B.f.publish("EditBoard", {
+                                pos: Y
+                            });
+                        }
+                    }
+                } else if (this.noa.targetedBlock && !(0, d.e)().posSatisfiesModifyConstraints(this.noa.playerEntity, P.adjacent[0], P.adjacent[1], P.adjacent[2])) {
+                    if (this.noa.serverSettings.canChange || this.noa.serverSettings.cantChangeError || "You cannot modify this block" !== this.noa.serverSettings.cantChangeError) {
+                        B.f.publish("showError", {
+                            error: this.noa.serverSettings.cantBuildError || this.noa.serverSettings.cantChangeError
+                        });
+                    }
+                }
+            }
+            
             placeBlock() {
                 var Y;
                 const P = this.noa.targetedBlock;
