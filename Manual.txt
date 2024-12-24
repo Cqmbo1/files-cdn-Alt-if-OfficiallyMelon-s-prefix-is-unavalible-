@@ -307,5 +307,7 @@ Infinite Jump:
 
 High Jump:
 
-    find: line with: ".jumpMultiplier.getTotalMultipliedVal()" 
+    find: line with: ".jumpMultiplier.getTotalMultipliedVal()".
+    Then between ".jumpAmount" and "*" in that line add:
+                  
 
