@@ -30,7 +30,7 @@ SecureEdge/Prevent Falloff:
                     
                     // get vars from (const <<P>> of X)
 
-                    raw:
+                    raw example:
                     
                     replace:
 
@@ -55,3 +55,31 @@ SecureEdge/Prevent Falloff:
                             physicsBody.preventFallOffEdge = true;
                             P._preventFallOffLastTick = true;
                         }
+
+Anti-Knock:
+
+    Find first: 
+
+    .applyImpulse(
+
+        
+    & wrap around with:
+
+    if (!window.antiknock) {
+    }
+
+
+        raw example:
+
+
+        replace:
+
+        L.applyImpulse(W)
+
+        with: 
+
+        if (!window.antiknock) {
+            L.applyImpulse(W)
+        }
+
+
