@@ -280,3 +280,28 @@ Scaffold:
                 let X;
             
             ......
+
+Infinite Jump:
+
+    find: ".serverSettings.airJumpCount;" and replace that and the var before that with: "window.AirJump;"
+
+    Raw example:
+
+    before:
+
+            const b = (G || X._jumpCount < function(Y, P, X) {
+                const q = Y.serverSettings.airJumpCount;
+                if (X)
+                    return q + 1;
+                return q
+            }(Y, X.__id, c))
+
+    after:
+
+            const b = (G || X._jumpCount < function(Y, P, X) {
+                const q = window.AirJump;
+                if (X)
+                    return q + 1;
+                return q
+            }(Y, X.__id, c))
+
