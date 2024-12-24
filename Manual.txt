@@ -318,7 +318,7 @@ placeBlock:
                     }
                 } else //add "if ("
                     this.noa.targetedBlock && !(0,
-                    >>>>>>h.b<<<<<<)().posSatisfiesModifyConstraints(this.noa.playerEntity, >>>m<<<.adjacent[0], >>>m<<<.adjacent[1], >>>m<<<.adjacent[2]) && (this.noa.serverSettings.canChange || this.noa.serverSettings.cantChangeError || "You cannot modify this block" !== this.noa.serverSettings.cantChangeError) && f.f.publish("showError", {
+                    >>>>>>h.b<<<<<<)().posSatisfiesModifyConstraints(this.noa.playerEntity, >>>m<<<.adjacent[0], >>>m<<<.adjacent[1], >>>m<<<.adjacent[2])//add ")" && // replace "&&" with: " { if"(this.noa.serverSettings.canChange || this.noa.serverSettings.cantChangeError || "You cannot modify this block" !== this.noa.serverSettings.cantChangeError) && //replace "&&" with "{" f.f.publish("showError", {
                         error: this.noa.serverSettings.cantBuildError || this.noa.serverSettings.cantChangeError
                     })
             }
