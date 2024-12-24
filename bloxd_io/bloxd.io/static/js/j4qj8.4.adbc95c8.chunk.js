@@ -11519,7 +11519,8 @@
             const {serverSettings: r} = Y
               , L = u.d[X.vehicle.type]
               , W = q.u[X.vehicle.type].getValues(X.vehicle.tier);
-              Object.defineProperty(window, 'GlobalSpeed', {
+            P.jumping = !!e.jump;
+            Object.defineProperty(window, 'GlobalSpeed', {
                 get: function () {
                     return this._globalSpeed;
                 },
@@ -11533,7 +11534,6 @@
             if (typeof window._globalSpeed === 'undefined') {
                 window._globalSpeed = r.walkingSpeed;
             }
-            P.jumping = !!e.jump;
             const c = e.forward ? e.backward ? 0 : 1 : e.backward ? -1 : 0
               , S = e.right ? e.left ? 0 : 1 : e.left ? -1 : 0;
             s.e.clientEscMenuOptions.crouchIsToggle ? P.crouching = O.crouchToggled : (e.crouch ? P.crouching = !0 : P.crouching = !1,
