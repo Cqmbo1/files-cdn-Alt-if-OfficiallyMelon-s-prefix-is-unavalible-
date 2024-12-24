@@ -247,6 +247,7 @@ Copy placeBlock and turn into placeUnderPlayer:
 2nd var: >>><<<
 3rd var: >>>><<<<
 4th var: >>>>><<<<<
+5th var: >>>>>><<<<<<
 
 raw example:
 
@@ -275,15 +276,15 @@ placeBlock:
                 }
                 )() && (K = this.noa.targetedBlock.position),
                 >>>>o<<<< && this.noa.targetedBlock && ((0,
-                h.b)().posSatisfiesModifyConstraints(this.noa.playerEntity, K[0], K[1], K[2]) || "Moonstone Explosive" === (0,
-                h.b)().getItemName(>>>>o<<<<))) {
+                >>>>>>h.b<<<<<<)().posSatisfiesModifyConstraints(this.noa.playerEntity, K[0], K[1], K[2]) || "Moonstone Explosive" === (0,
+                >>>>>>h.b<<<<<<)().getItemName(>>>>o<<<<))) {
                     const [>>U<<,>>>m<<<,>>>>>C<<<<<] = K;
 
                     '//
 
                     if (null === s.m[>>>>o<<<<].meta.rot && null === s.m[>>>>o<<<<].meta.halfblockPlacement || (>>>>o<<<< = this.getPlaceBlockRotatedId(>>>>o<<<<, >>U<<, >>>m<<<, >>>>>C<<<<<)),
                     (0,
-                    h.b)().playerCanPlaceItem(this.noa.playerEntity, >>U<<, >>>m<<<, >>>>>C<<<<<, >>>>o<<<<)) {
+                    >>>>>>h.b<<<<<<)().playerCanPlaceItem(this.noa.playerEntity, >>U<<, >>>m<<<, >>>>>C<<<<<, >>>>o<<<<)) {
                         var W;
                         const H = this.noa.getBlock([>>U<<, >>>m<<<, >>>>>C<<<<<]);
                         if ((0 === H || y.blockMetadata[H].fluid || null !== (W = y.blockMetadata[H]) && void 0 !== W && W.canBePlacedOver) && >>>>o<<<< !== H) {
@@ -298,7 +299,7 @@ placeBlock:
                                 }, !0)
                             }(>>U<<, >>>>o<<<<), // add ")" between "}" and "("
                             (0,
-                            h.b)().setBlock(>>U<<[0], >>U<<[1], >>U<<[2], >>>>o<<<<),
+                            >>>>>>h.b<<<<<<)().setBlock(>>U<<[0], >>U<<[1], >>U<<[2], >>>>o<<<<),
                             (0,
                             s.o)(>>>>o<<<<, !1),
                             n && !this.noa.serverSettings.creative) { // add "if (" before "n"
@@ -317,7 +318,7 @@ placeBlock:
                     }
                 } else //add "if ("
                     this.noa.targetedBlock && !(0,
-                    h.b)().posSatisfiesModifyConstraints(this.noa.playerEntity, >>>m<<<.adjacent[0], >>>m<<<.adjacent[1], >>>m<<<.adjacent[2]) && (this.noa.serverSettings.canChange || this.noa.serverSettings.cantChangeError || "You cannot modify this block" !== this.noa.serverSettings.cantChangeError) && f.f.publish("showError", {
+                    >>>>>>h.b<<<<<<)().posSatisfiesModifyConstraints(this.noa.playerEntity, >>>m<<<.adjacent[0], >>>m<<<.adjacent[1], >>>m<<<.adjacent[2]) && (this.noa.serverSettings.canChange || this.noa.serverSettings.cantChangeError || "You cannot modify this block" !== this.noa.serverSettings.cantChangeError) && f.f.publish("showError", {
                         error: this.noa.serverSettings.cantBuildError || this.noa.serverSettings.cantChangeError
                     })
             }
@@ -345,7 +346,7 @@ placeUnderPlayer:
                 const blockBelowPlayer = [Math.floor(playerPos[0]), Math.floor(playerPos[1] - 1), Math.floor(playerPos[2])];
             
                 // Check if the player can place the block below
-                if (>>>>o<<<< && blockBelowPlayer && ((0, h.b)().posSatisfiesModifyConstraints(this.noa.playerEntity, blockBelowPlayer[0], blockBelowPlayer[1], blockBelowPlayer[2]) || "Moonstone Explosive" === (0, h.b)().getItemName(>>>>o<<<<))) {
+                if (>>>>o<<<< && blockBelowPlayer && ((0, >>>>>>h.b<<<<<<)().posSatisfiesModifyConstraints(this.noa.playerEntity, blockBelowPlayer[0], blockBelowPlayer[1], blockBelowPlayer[2]) || "Moonstone Explosive" === (0, >>>>>>h.b<<<<<<)().getItemName(>>>>o<<<<))) {
                     
                     const [>>U<<, >>>m<<<, >>>>>C<<<<<] = blockBelowPlayer;
             
@@ -354,7 +355,7 @@ placeUnderPlayer:
 
                     
                     if (null === s.m[>>>>o<<<<].meta.rot && null === s.m[>>>>o<<<<].meta.halfblockPlacement || (>>>>o<<<< = this.getPlaceBlockRotatedId(>>>>o<<<<, >>U<<, >>>m<<<, >>>>>C<<<<<)),
-                    (0, h.b)().playerCanPlaceItem(this.noa.playerEntity, >>U<<, >>>m<<<, >>>>>C<<<<<, >>>>o<<<<)) {
+                    (0, >>>>>>h.b<<<<<<)().playerCanPlaceItem(this.noa.playerEntity, >>U<<, >>>m<<<, >>>>>C<<<<<, >>>>o<<<<)) {
                         var W;
                         const H = this.noa.getBlock([>>U<<, >>>m<<<, >>>>>C<<<<<]);
             
@@ -370,7 +371,7 @@ placeUnderPlayer:
                                 }, !0)
                             })(>>U<<, >>>>o<<<<);
             
-                            (0, h.b)().setBlock(>>U<<[0], >>U<<[1], >>U<<[2], >>>>o<<<<);
+                            (0, >>>>>>h.b<<<<<<)().setBlock(>>U<<[0], >>U<<[1], >>U<<[2], >>>>o<<<<);
                             (0, s.o)(>>>>o<<<<, !1);
             
                             // If not in creative mode, consume the item from the player's inventory
@@ -383,7 +384,7 @@ placeUnderPlayer:
                             "Board" === this.bloxd.getMetaInfo(>>>>o<<<<).rootName && f.f.publish("EditBoard", { pos: >>U<< });
                         }
                     }
-                } else if (this.noa.targetedBlock && !(0, h.b)().posSatisfiesModifyConstraints(this.noa.playerEntity, >>>m<<<.adjacent[0], >>>m<<<.adjacent[1], >>>m<<<.adjacent[2])) {
+                } else if (this.noa.targetedBlock && !(0, >>>>>>h.b<<<<<<)().posSatisfiesModifyConstraints(this.noa.playerEntity, >>>m<<<.adjacent[0], >>>m<<<.adjacent[1], >>>m<<<.adjacent[2])) {
                     if (this.noa.serverSettings.canChange || this.noa.serverSettings.cantChangeError || "You cannot modify this block" !== this.noa.serverSettings.cantChangeError) {
                         f.f.publish("showError", {
                             error: this.noa.serverSettings.cantBuildError || this.noa.serverSettings.cantChangeError
