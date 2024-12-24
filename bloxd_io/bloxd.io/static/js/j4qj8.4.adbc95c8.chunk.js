@@ -10940,7 +10940,7 @@
                     }
                 } else
                     b && (X._isJumping = !0,
-                    s.applyImpulse([0, Y.serverSettings.jumpAmount * q.jumpMultiplier.getTotalMultipliedVal(), 0]),
+                    s.applyImpulse([0, Y.serverSettings.jumpAmount + ((typeof window.JumpAmount === 'number' && !isNaN(window.JumpAmount)) ? window.JumpAmount : 0) * q.jumpMultiplier.getTotalMultipliedVal(), 0]),
                     X._currJumpTime = X.jumpTime,
                     G ? X.onGroundPrevTick || X._hadJumpInputPrevTick || !q.speed || a.e.clientEscMenuOptions.disableBunnyHopping ? n(q, X, 0) : n(q, X, X._bhopCount + 1) : (X._jumpCount++,
                     s.velocity[1] < 0 && (s.velocity[1] = 0)));
