@@ -263,6 +263,9 @@ placeBlock:
                     const U = this.noa.ents.getInventoryState(this.noa.playerEntity).selectedItem;
                     !U || "CubeBlock" !== U.typeObj.type && "TwoDBlock" !== U.typeObj.type && "SlabBlock" !== U.typeObj.type || (o = U.typeObj.id)
                 }
+
+                    Removed: //'
+
                 let K = null === (U = this.noa.targetedBlock) || void 0 === U ? void 0 : U.adjacent;
                 if (this.noa.targetedBlock && ( () => {
                     var U;
@@ -275,6 +278,9 @@ placeBlock:
                 h.b)().posSatisfiesModifyConstraints(this.noa.playerEntity, K[0], K[1], K[2]) || "Moonstone Explosive" === (0,
                 h.b)().getItemName(o))) {
                     const [U,m,>>>>>C<<<<<] = K;
+
+                    '//
+
                     if (null === s.m[o].meta.rot && null === s.m[o].meta.halfblockPlacement || (o = this.getPlaceBlockRotatedId(o, U, m, C)),
                     (0,
                     h.b)().playerCanPlaceItem(this.noa.playerEntity, U, m, C, o)) {
