@@ -58,25 +58,26 @@ SecureEdge/Prevent Falloff:
 
 Anti-Knock:
 
-    Find first: 
+    // Find first: 
 
-    .applyImpulse(
+    '.applyImpulse('
 
-        
-    & wrap around with:
 
-    if (!window.antiknock) {
+    // & wrap around with:
+
+    'if (!window.antiknock) {
     }
+    '
 
 
         raw example:
 
 
-        replace:
+        // replace:
 
         L.applyImpulse(W)
 
-        with: 
+        // with: 
 
         if (!window.antiknock) {
             L.applyImpulse(W)
