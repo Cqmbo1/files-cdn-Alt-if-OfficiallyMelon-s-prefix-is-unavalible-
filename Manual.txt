@@ -274,7 +274,7 @@ placeBlock:
                 o && this.noa.targetedBlock && ((0,
                 h.b)().posSatisfiesModifyConstraints(this.noa.playerEntity, K[0], K[1], K[2]) || "Moonstone Explosive" === (0,
                 h.b)().getItemName(o))) {
-                    const [U,m,C] = K;
+                    const [U,m,>>>>>C<<<<<] = K;
                     if (null === s.m[o].meta.rot && null === s.m[o].meta.halfblockPlacement || (o = this.getPlaceBlockRotatedId(o, U, m, C)),
                     (0,
                     h.b)().playerCanPlaceItem(this.noa.playerEntity, U, m, C, o)) {
