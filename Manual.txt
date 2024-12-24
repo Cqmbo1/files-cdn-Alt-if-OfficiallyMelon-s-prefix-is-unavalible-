@@ -288,15 +288,15 @@ placeBlock:
                         const H = this.noa.getBlock([>>U<<, >>>m<<<, >>>>>C<<<<<]);
                         if ((0 === H || y.blockMetadata[H].fluid || null !== (W = y.blockMetadata[H]) && void 0 !== W && W.canBePlacedOver) && >>>>o<<<< !== H) {
                             this.noa.ents.getMoveState(this.heldItemState.__id).setArmsAreSwinging();
-                            const >>U<< = Q().copy([], K);
-                            if (function(>>U<<, >>>m<<<) {
+                            const >>U<< = Q().copy([], K);  // replace var (K) with "blockBelowPlayer"
+                            if (function(>>U<<, >>>m<<<) { // remove "if"
                                 (0,
                                 p.Wb)(k.je, {
                                     pos: >>U<<,
                                     toBlock: >>>m<<<,
                                     checker: I.e
                                 }, !0)
-                            }(>>U<<, >>>>o<<<<),
+                            }(>>U<<, >>>>o<<<<), // add ")" between "}" and "("
                             (0,
                             h.b)().setBlock(>>U<<[0], >>U<<[1], >>U<<[2], >>>>o<<<<),
                             (0,
