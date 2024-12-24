@@ -301,13 +301,18 @@ placeBlock:
                             h.b)().setBlock(>>U<<[0], >>U<<[1], >>U<<[2], >>>>o<<<<),
                             (0,
                             s.o)(>>>>o<<<<, !1),
-                            n && !this.noa.serverSettings.creative) {
+                            n && !this.noa.serverSettings.creative) { // add "if (" before "n"
                                 const >>U<< = this.noa.ents.getInventoryState(this.noa.playerEntity);
                                 >>.inventory.removeItem(>>U<<.inventory.getSelectedSlotIndex(), 1)
                             }
+
+                Remove: //'
+
                             "Board" === this.bloxd.getMetaInfo(>>>>o<<<<).rootName && f.f.publish("EditBoard", {
                                 pos: >>U<<
                             })
+                    '//
+
                         }
                     }
                 } else
