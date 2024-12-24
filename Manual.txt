@@ -315,9 +315,9 @@ placeBlock:
 placeUnderPlayer:
 
             placeUnderPlayer() {
-                var U;
-                const m = this.noa.targetedBlock;
-                let o;
+                var >>U<<;
+                const >>>m<<< = this.noa.targetedBlock;
+                let >>>>o<<<<;
                 this.noa.serverSettings && (o = s.m[this.noa.serverSettings.defaultBlock].id);
                 
                 const n = this.noa.ents.hasComponent(this.noa.playerEntity, this.noa.ents.names.inventory);
