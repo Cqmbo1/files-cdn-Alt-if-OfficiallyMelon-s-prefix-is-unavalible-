@@ -1,3 +1,59 @@
+Anti-CamShake:
+
+   //Find:
+
+   .addCameraShake(
+
+    // & wrap around with:
+
+    if (!window.camshake) {
+    }
+
+        raw example;
+
+
+        // replace:
+
+        e.addCameraShake(P / 40);
+                    
+        // with:
+
+        if (!window.camshake) {
+        e.addCameraShake(P / 40);
+        }
+
+
+
+Anti-Knock:
+
+    // Find first: 
+
+    '.applyImpulse('
+
+
+    // & wrap around with:
+
+    'if (!window.antiknock) {
+    }
+    '
+
+
+        raw example:
+
+
+        // replace:
+
+        L.applyImpulse(W)
+
+        // with: 
+
+        if (!window.antiknock) {
+            L.applyImpulse(W)
+        }
+
+
+
+
 SecureEdge/Prevent Falloff:
 
 // to find from non-modified js: search: ').preventFallOffEdge'
@@ -55,54 +111,3 @@ SecureEdge/Prevent Falloff:
                             physicsBody.preventFallOffEdge = true;
                             P._preventFallOffLastTick = true;
                         }
-
-Anti-Knock:
-
-    // Find first: 
-
-    '.applyImpulse('
-
-
-    // & wrap around with:
-
-    'if (!window.antiknock) {
-    }
-    '
-
-
-        raw example:
-
-
-        // replace:
-
-        L.applyImpulse(W)
-
-        // with: 
-
-        if (!window.antiknock) {
-            L.applyImpulse(W)
-        }
-
-Anti-CamShake:
-
-   //Find:
-
-   .addCameraShake(
-
-    // & wrap around with:
-
-    if (!window.camshake) {
-    }
-
-        raw example;
-
-
-        // replace:
-
-        e.addCameraShake(P / 40);
-                    
-        // with:
-
-        if (!window.camshake) {
-        e.addCameraShake(P / 40);
-        }
