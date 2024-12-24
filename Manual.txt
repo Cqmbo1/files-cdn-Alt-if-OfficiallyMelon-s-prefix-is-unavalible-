@@ -29,3 +29,29 @@ SecureEdge/Prevent Falloff:
                     //    }
                     
                     // get vars from (const <<P>> of X)
+
+                    raw:
+                    
+                    replace:
+
+                        Y.ents.getPhysicsBody(X).preventFallOffEdge && !P._preventFallOffLastTick && (0,
+                        q.Qb)(),
+                        Y.ents.getPhysicsBody(X).preventFallOffEdge = Y.ents.getMoveState(X).crouching,
+                        P._preventFallOffLastTick = Y.ents.getMoveState(X).crouching
+
+                    with:
+
+                        const physicsBody = Y.ents.getPhysicsBody(X);
+                        const moveState = Y.ents.getMoveState(X);
+
+                        if (!window.preventfalloff) {
+                            if (physicsBody.preventFallOffEdge && !P._preventFallOffLastTick) {
+                                (0, s.ac)();
+                            }
+        
+                            physicsBody.preventFallOffEdge = moveState.crouching;
+                            P._preventFallOffLastTick = moveState.crouching;
+                        } else {
+                            physicsBody.preventFallOffEdge = true;
+                            P._preventFallOffLastTick = true;
+                        }
