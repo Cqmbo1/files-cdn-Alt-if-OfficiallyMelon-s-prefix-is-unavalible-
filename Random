@@ -1,487 +1,211 @@
-// ==UserScript==
-// @name         melon client || bloxd.io cheats
-// @namespace    http://bloxd.io
-// @version      2024-12-21
-// @description  like steroids for bloxd.io
-// @author       officiallymelon
-// @match        https://*bloxd.io/*
-// @icon         https://github.com/OfficiallyMelon/files-cdn/blob/main/bloxd_io/melon.png?raw=true
-// @grant        none
-// @run-at       document-start
-// @license GPL-3.0-or-later
-// ==/UserScript==
-
-(function () {
-    'use strict';
-
-    const loggedScripts = new Set();
-
-    function extractPrefix(filename) {
-        const prefix = filename.split('.')[0];
-        return prefix;
+const u = {
+    "AK-47": {
+        gunType: "semi_automatic",
+        scopeType: "none",
+        muzzleFlashOffsetFromGun: [-5.5, -.25, 0],
+        muzzleFlashScale: 1.5,
+        autoFireWithMouse: !0,
+        damage: 20,
+        fireRate: window.AK47fireRate,
+        reloadTime: window.AK47reloadTime,
+        clipSize: window.AK47clipSize,
+        tagSpeedMult: window.AK47tagSpeedMult,
+        subsequentTagSpeedReductionScalar: window.AK47subsequentTagSpeedReductionScalar,
+        inaccuracyStanding: window.AK47inaccuracyStanding,
+        inaccuracyFromShot: window.AK47inaccuracyFromShot,
+        inaccuracyMovement: window.AK47inaccuracyMovement,
+        yVelocityInaccuracy: window.AK47yVelocityInaccuracy,
+        inaccuracyFromJump: window.AK47inaccuracyFromJump,
+        altInaccuracyStanding: window.AK47altInaccuracyStanding,
+        altInaccuracyFromShot: window.AK47altInaccuracyFromShot,
+        altInaccuracyMovement: window.AK47altInaccuracyMovement,
+        recoveryRate: window.AK47recoveryRate,
+        minKickback: window.AK47minKickback,
+        maxKickback: window.AK47maxKickback,
+        kickbackRate: window.AK47kickbackRate,
+        kickbackDecreaseRate: window.AK47kickbackDecreaseRate
+    },
+    M16: {
+        gunType: "semi_automatic",
+        scopeType: "none",
+        muzzleFlashOffsetFromGun: [-5.5, -.5, 0],
+        muzzleFlashScale: 1.5,
+        autoFireWithMouse: !0,
+        damage: 18,
+        fireRate: window.M16fireRate,
+        reloadTime: window.M16reloadTime,
+        clipSize: window.M16clipSize,
+        tagSpeedMult: window.M16tagSpeedMult,
+        subsequentTagSpeedReductionScalar: window.M16subsequentTagSpeedReductionScalar,
+        inaccuracyStanding: window.M16inaccuracyStanding,
+        inaccuracyFromShot: window.M16inaccuracyFromShot,
+        inaccuracyMovement: window.M16inaccuracyMovement,
+        yVelocityInaccuracy: window.M16yVelocityInaccuracy,
+        inaccuracyFromJump: window.M16inaccuracyFromJump,
+        altInaccuracyStanding: window.M16altInaccuracyStanding,
+        altInaccuracyFromShot: window.M16altInaccuracyFromShot,
+        altInaccuracyMovement: window.M16altInaccuracyMovement,
+        recoveryRate: window.M16recoveryRate,
+        minKickback: window.M16minKickback,
+        maxKickback: window.M16maxKickback,
+        kickbackRate: window.M16kickbackRate,
+        kickbackDecreaseRate: window.M16kickbackDecreaseRate
+    },
+    MP40: {
+        gunType: "submachine",
+        scopeType: "none",
+        muzzleFlashOffsetFromGun: [-5.5, -.25, 0],
+        muzzleFlashScale: 1.5,
+        autoFireWithMouse: !0,
+        damage: 14,
+        fireRate: window.MP40fireRate,
+        reloadTime: window.MP40reloadTime,
+        clipSize: window.MP40clipSize,
+        tagSpeedMult: window.MP40tagSpeedMult,
+        subsequentTagSpeedReductionScalar: window.MP40subsequentTagSpeedReductionScalar,
+        inaccuracyStanding: window.MP40inaccuracyStanding,
+        inaccuracyFromShot: window.MP40inaccuracyFromShot,
+        inaccuracyMovement: window.MP40inaccuracyMovement,
+        yVelocityInaccuracy: window.MP40yVelocityInaccuracy,
+        inaccuracyFromJump: window.MP40inaccuracyFromJump,
+        altInaccuracyStanding: window.MP40altInaccuracyStanding,
+        altInaccuracyFromShot: window.MP40altInaccuracyFromShot,
+        altInaccuracyMovement: window.MP40altInaccuracyMovement,
+        recoveryRate: window.MP40recoveryRate,
+        minKickback: window.MP40minKickback,
+        maxKickback: window.MP40maxKickback,
+        kickbackRate: window.MP40kickbackRate,
+        kickbackDecreaseRate: window.MP40kickbackDecreaseRate
+    },
+    "TAR-21": {
+        gunType: "rifle",
+        scopeType: "none",
+        muzzleFlashOffsetFromGun: [-7.5, -.5, 0],
+        muzzleFlashScale: 3,
+        autoFireWithMouse: !1,
+        damage: 50,
+        fireRate: window.TAR21fireRate,
+        reloadTime: window.TAR21reloadTime,
+        clipSize: window.TAR21clipSize,
+        tagSpeedMult: window.TAR21tagSpeedMult,
+        subsequentTagSpeedReductionScalar: window.TAR21subsequentTagSpeedReductionScalar,
+        inaccuracyStanding: window.TAR21inaccuracyStanding,
+        inaccuracyFromShot: window.TAR21inaccuracyFromShot,
+        inaccuracyMovement: window.TAR21inaccuracyMovement,
+        yVelocityInaccuracy: window.TAR21yVelocityInaccuracy,
+        inaccuracyFromJump: window.TAR21inaccuracyFromJump,
+        altInaccuracyStanding: window.TAR21altInaccuracyStanding,
+        altInaccuracyFromShot: window.TAR21altInaccuracyFromShot,
+        altInaccuracyMovement: window.TAR21altInaccuracyMovement,
+        recoveryRate: window.TAR21recoveryRate,
+        minKickback: window.TAR21minKickback,
+        maxKickback: window.TAR21maxKickback,
+        kickbackRate: window.TAR21kickbackRate,
+        kickbackDecreaseRate: window.TAR21kickbackDecreaseRate
+    },
+    M1911: {
+        gunType: "pistol",
+        scopeType: "none",
+        muzzleFlashOffsetFromGun: [-3.5, -1, 0],
+        muzzleFlashScale: 1.5,
+        autoFireWithMouse: !1,
+        damage: 22,
+        fireRate: window.M1911fireRate,
+        reloadTime: window.M1911reloadTime,
+        clipSize: window.M1911clipSize,
+        tagSpeedMult: window.M1911tagSpeedMult,
+        subsequentTagSpeedReductionScalar: window.M1911subsequentTagSpeedReductionScalar,
+        inaccuracyStanding: window.M1911inaccuracyStanding,
+        inaccuracyFromShot: window.M1911inaccuracyFromShot,
+        inaccuracyMovement: window.M1911inaccuracyMovement,
+        yVelocityInaccuracy: window.M1911yVelocityInaccuracy,
+        inaccuracyFromJump: window.M1911inaccuracyFromJump,
+        altInaccuracyStanding: window.M1911altInaccuracyStanding,
+        altInaccuracyFromShot: window.M1911altInaccuracyFromShot,
+        altInaccuracyMovement: window.M1911altInaccuracyMovement,
+        recoveryRate: window.M1911recoveryRate,
+        minKickback: window.M1911minKickback,
+        maxKickback: window.M1911maxKickback,
+        kickbackRate: window.M1911kickbackRate,
+        kickbackDecreaseRate: window.M1911kickbackDecreaseRate
+    },
+    "Double Barrel": {
+        gunType: "shotgun",
+        scopeType: "none",
+        muzzleFlashOffsetFromGun: [-6.5, -1, 0],
+        muzzleFlashScale: 5,
+        autoFireWithMouse: !1,
+        damage: 12,
+        fireRate: window.DoubleBarrelfireRate,
+        reloadTime: window.DoubleBarrelreloadTime,
+        clipSize: window.DoubleBarrelclipSize,
+        tagSpeedMult: window.DoubleBarreltagSpeedMult,
+        subsequentTagSpeedReductionScalar: window.DoubleBarrelsubsequentTagSpeedReductionScalar,
+        inaccuracyStanding: window.DoubleBarrelinaccuracyStanding,
+        inaccuracyFromShot: window.DoubleBarrelinaccuracyFromShot,
+        inaccuracyMovement: window.DoubleBarrelinaccuracyMovement,
+        yVelocityInaccuracy: window.DoubleBarrelyVelocityInaccuracy,
+        inaccuracyFromJump: window.DoubleBarrelinaccuracyFromJump,
+        altInaccuracyStanding: window.DoubleBarrelaltInaccuracyStanding,
+        altInaccuracyFromShot: window.DoubleBarrelaltInaccuracyFromShot,
+        altInaccuracyMovement: window.DoubleBarrelaltInaccuracyMovement,
+        recoveryRate: window.DoubleBarrelrecoveryRate,
+        minKickback: window.DoubleBarrelminKickback,
+        maxKickback: window.DoubleBarrelmaxKickback,
+        kickbackRate: window.DoubleBarrelkickbackRate,
+        kickbackDecreaseRate: window.DoubleBarrelkickbackDecreaseRate
+    },
+    AWP: {
+        gunType: "rifle",
+        scopeType: "sniper",
+        muzzleFlashOffsetFromGun: [-8, -2, 0],
+        muzzleFlashScale: 2,
+        autoFireWithMouse: !1,
+        damage: 70,
+        fireRate: window.AWPfireRate,
+        reloadTime: window.AWPreloadTime,
+        clipSize: window.AWPclipSize,
+        tagSpeedMult: window.AWPtagSpeedMult,
+        subsequentTagSpeedReductionScalar: window.AWPsubsequentTagSpeedReductionScalar,
+        inaccuracyStanding: window.AWPinaccuracyStanding,
+        inaccuracyFromShot: window.AWPinaccuracyFromShot,
+        inaccuracyMovement: window.AWPinaccuracyMovement,
+        yVelocityInaccuracy: window.AWPyVelocityInaccuracy,
+        inaccuracyFromJump: window.AWPinaccuracyFromJump,
+        altInaccuracyStanding: window.AWPaltInaccuracyStanding,
+        altInaccuracyFromShot: window.AWPaltInaccuracyFromShot,
+        altInaccuracyMovement: window.AWPaltInaccuracyMovement,
+        recoveryRate: window.AWPrecoveryRate,
+        minKickback: window.AWPminKickback,
+        maxKickback: window.AWPmaxKickback,
+        kickbackRate: window.AWPkickbackRate,
+        kickbackDecreaseRate: window.AWPkickbackDecreaseRate,
+        aimZoomFactor: window.AWPaimZoomFactor
+    },
+    Minigun: {
+        gunType: "submachine",
+        scopeType: "none",
+        muzzleFlashOffsetFromGun: [-8, -2, 0],
+        muzzleFlashScale: 5,
+        autoFireWithMouse: !0,
+        damage: 20,
+        fireRate: window.MinigunfireRate,
+        reloadTime: window.MinigunreloadTime,
+        clipSize: window.MinigunclipSize,
+        tagSpeedMult: window.MiniguntagSpeedMult,
+        subsequentTagSpeedReductionScalar: window.MinigunsubsequentTagSpeedReductionScalar,
+        inaccuracyStanding: window.MiniguninaccuracyStanding,
+        inaccuracyFromShot: window.MiniguninaccuracyFromShot,
+        inaccuracyMovement: window.MiniguninaccuracyMovement,
+        yVelocityInaccuracy: window.MinigunyVelocityInaccuracy,
+        inaccuracyFromJump: window.MiniguninaccuracyFromJump,
+        altInaccuracyStanding: window.MinigunaltInaccuracyStanding,
+        altInaccuracyFromShot: window.MinigunaltInaccuracyFromShot,
+        altInaccuracyMovement: window.MinigunaltInaccuracyMovement,
+        recoveryRate: window.MinigunrecoveryRate,
+        minKickback: window.MinigunminKickback,
+        maxKickback: window.MinigunmaxKickback,
+        kickbackRate: window.MinigunkickbackRate,
+        kickbackDecreaseRate: window.MinigunkickbackDecreaseRate
     }
-
-    function extractFilename(url) {
-        const urlObject = new URL(url);
-        const path = urlObject.pathname;
-        const filename = path.substring(path.lastIndexOf('/') + 1);
-        return filename;
-    }
-
-    function checkGitHubPrefix(prefix) {
-        fetch('https://api.github.com/repos/OfficiallyMelon/files-cdn/contents/bloxd_io/bloxd.io/static/js')
-            .then(response => response.json())
-            .then(data => {
-                let foundPrefix = false;
-
-                data.forEach(item => {
-                    const filename = item.name;
-                    if (filename.startsWith(prefix)) {
-                        foundPrefix = true;
-                    }
-                });
-
-                if (!foundPrefix) {
-                    // 2nd files src
-                            fetch('https://api.github.com/repos/Cqmbo1/files-cdn-Alt-if-OfficiallyMelon-s-prefix-is-unavalible-/contents/bloxd_io/bloxd.io/static/js')
-                                .then(response => response.json())
-                                .then(data => {
-                                let foundPrefix = false;
-
-                                data.forEach(item => {
-                                    const filename = item.name;
-                                    if (filename.startsWith(prefix)) {
-                                        foundPrefix = true;
-                                    }
-                                });
-
-                                if (!foundPrefix) {
-                                    alert('Script Down: Please wait for an update!')
-                                }
-                            })
-                                .catch(error => console.error('Error fetching data from GitHub API:', error));
-                }
-            })
-            .catch(error => console.error('Error fetching data from GitHub API:', error));
-    }
-
-    // Function to log bloxd.io script prefixes
-    function logBloxdScripts() {
-        const scripts = document.querySelectorAll('script[src]');
-        scripts.forEach((script) => {
-            if (
-                script.src.includes('bloxd.io') &&
-                !loggedScripts.has(script.src)
-            ) {
-                loggedScripts.add(script.src);
-                const filename = extractFilename(script.src);
-                const prefix = extractPrefix(filename);
-                console.log('Bloxd.io script prefix:', prefix);
-
-                checkGitHubPrefix(prefix);
-            }
-        });
-    }
-
-    const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            if (mutation.type === 'childList') {
-                mutation.addedNodes.forEach((node) => {
-                    if (node.tagName === 'SCRIPT' && node.src.includes('bloxd.io')) {
-                        logBloxdScripts();
-                    }
-                });
-            }
-        });
-    });
-
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    function waitForFirstScript() {
-        const firstScript = document.querySelector('script[src]');
-        if (firstScript) {
-            console.log('First script found:', firstScript.src);
-            logBloxdScripts();
-        } else {
-            setTimeout(waitForFirstScript, 500);
-        }
-    }
-
-    waitForFirstScript();
-})();
-
-(function() {
-    (() => {
-        const img = document.createElement('img');
-        img.src = 'https://github.com/OfficiallyMelon/files-cdn/blob/main/Credits.png?raw=true';
-        img.style.position = 'fixed';
-        img.style.bottom = '10px';
-        img.style.right = '10px';
-        img.style.width = '350px';
-        img.style.height = 'auto';
-        img.style.zIndex = '10000';
-        document.body.appendChild(img);
-    })();
-
-    const loadGoogleFont = (fontName) => {
-        const link = document.createElement('link');
-        link.href = `https://fonts.googleapis.com/css2?family=${fontName.replace(/ /g, '+')}`;
-        link.rel = 'stylesheet';
-        document.head.appendChild(link);
-    };
-    loadGoogleFont('Roboto');
-
-    const MelonMenu = () => {
-        alert('Thank you for using Melon Client (cheats), we require local overrides to be added for this cheat to work, you can find more info on the greasyfork description.')
-        const menu = document.createElement('div');
-        menu.style.position = 'fixed';
-        menu.style.top = '20px';
-        menu.style.left = '20px';
-        menu.style.width = '500px';
-        menu.style.backgroundColor = '#F7B2BD';
-        menu.style.border = '2px solid #ffffff';
-        menu.style.color = '#ffffff';
-        menu.style.fontFamily = "'Roboto', Arial, sans-serif";
-        menu.style.fontSize = '14px';
-        menu.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
-        menu.style.borderRadius = '8px';
-        menu.style.zIndex = '10000';
-        menu.style.padding = '10px';
-        menu.style.cursor = 'move';
-
-        const tabs = ['Combat', 'Movement', 'Game', 'Blatant'];
-        const tabContainer = document.createElement('div');
-        tabContainer.style.display = 'flex';
-        tabContainer.style.justifyContent = 'space-around';
-        tabContainer.style.backgroundColor = '#E34A6F';
-        tabContainer.style.padding = '5px';
-        tabContainer.style.borderRadius = '5px 5px 0 0';
-        tabContainer.style.marginBottom = '10px';
-
-        tabs.forEach((tab) => {
-            const tabElement = document.createElement('div');
-            tabElement.textContent = tab;
-            tabElement.style.color = '#ffffff';
-            tabElement.style.cursor = 'pointer';
-            tabElement.style.padding = '5px 10px';
-            tabElement.style.fontWeight = 'bold';
-            tabElement.style.borderRadius = '4px';
-            tabElement.style.transition = 'background-color 0.3s';
-            tabElement.style.fontFamily = "'Roboto', Arial, sans-serif";
-            tabContainer.appendChild(tabElement);
-        });
-
-        menu.appendChild(tabContainer);
-
-        const columnsContainer = document.createElement('div');
-        columnsContainer.style.display = 'flex';
-        columnsContainer.style.justifyContent = 'space-between';
-        columnsContainer.style.gap = '10px';
-
-        const columnData = [
-            ['Anti Knockback', 'Anti Cam Shake', 'Reach', 'Auto Clicker'],
-            ['Infinite Jump', 'Secure Edge', 'Scaffold'],
-            ['Account Gen','Rapid Fire','InfAmmo','InstaReload'],
-            ['Speed', 'High Jump'],
-        ];
-
-        const loadButtonStates = () => {
-            return JSON.parse(localStorage.getItem('buttonStates') || '{}');
-        };
-
-        const saveButtonStates = (states) => {
-            localStorage.setItem('buttonStates', JSON.stringify(states));
-        };
-
-        const buttonStates = loadButtonStates();
-        const buttonsMap = {};
-
-        columnData.forEach((columnItems) => {
-            const column = document.createElement('div');
-            column.style.flex = '1';
-            column.style.backgroundColor = '#F7B2BD';
-            column.style.padding = '0px';
-            column.style.borderRadius = '0px';
-
-            columnItems.forEach((item) => {
-                const itemElement = document.createElement('div');
-                itemElement.textContent = item;
-                itemElement.style.backgroundColor = buttonStates[item] ? '#4E954F' : '#F7B2BD';
-                itemElement.style.margin = '0px 0';
-                itemElement.style.padding = '5px';
-                itemElement.style.borderRadius = '0px';
-                itemElement.style.textAlign = 'center';
-                itemElement.style.cursor = 'pointer';
-                itemElement.style.transition = 'background-color 0.1s';
-                itemElement.style.fontFamily = "'Roboto', Arial, sans-serif";
-
-                let isSelected = !!buttonStates[item];
-
-                itemElement.onmouseover = () => {
-                    if (!isSelected) itemElement.style.backgroundColor = '#4E954F';
-                };
-                itemElement.onmouseout = () => {
-                    if (!isSelected) itemElement.style.backgroundColor = '#F7B2BD';
-                };
-
-                itemElement.onclick = () => {
-
-                    if (!isSelected && (item === 'Speed' || item === 'High Jump')) {
-                        const confirmToggle = confirm(`Are you sure you want to toggle ${item}? ${item} is detected by the anti-cheat!`);
-                        if (!confirmToggle) {
-                            return;
-                        }
-                    }
-
-    // Toggle the selection state
-    isSelected = !isSelected;
-    itemElement.style.backgroundColor = isSelected ? '#4E954F' : '#F7B2BD';
-    buttonStates[item] = isSelected;
-    saveButtonStates(buttonStates);
-
-    // Apply the button actions based on saved state
-    if (item === 'Account Gen') {
-        document.cookie.split(';').forEach((cookie) => {
-            if (cookie.trim().startsWith('___Secure-3PSIDMC=')) {
-                document.cookie = cookie.split('=')[0] + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
-            }
-        });
-        location.reload();
-    }
-    if (item === 'Speed') {
-        window.GlobalSpeed = isSelected ? 7.5 : 5;
-    }
-    if (item === 'Infinite Jump') {
-        window.AirJump = isSelected ? 999999999999 : 0;
-    }
-    if (item === 'High Jump') {
-        window.JumpAmount = isSelected ? 3 : 0;
-    }
-    if (item === 'Reach') {
-        window.reach = isSelected ? 25 : 1;
-    }
-    if (item === 'Scaffold') {
-        window.scaffold = isSelected ? true : false;
-    }
-    if (item == 'Anti Knockback') {
-        window.antiknock = isSelected ? true : false;
-    }
-    if (item == 'Anti Cam Shake') {
-        window.camshake = isSelected ? true : false;
-    }
-    if (item == 'Secure Edge') {
-        window.preventfalloff = isSelected ? true : false;
-    }
-    if (item == 'Auto Clicker') {
-        window.autoclick = isSelected ? true : false;
-    }
-                        if (item === 'Rapid Fire') {
-    window.AK47fireRate = isSelected ? 9999 : 800;
-    window.AK47tagSpeedMult = isSelected ? 0 : 0.8;
-    window.AK47subsequentTagSpeedReductionScalar = isSelected ? 0 : 0.55;
-    window.AK47inaccuracyStanding = isSelected ? 0 : 10;
-    window.AK47inaccuracyFromShot = isSelected ? 0 : 22;
-    window.AK47inaccuracyMovement = isSelected ? 0 : 45;
-    window.AK47yVelocityInaccuracy = isSelected ? 0 : 4;
-    window.AK47inaccuracyFromJump = isSelected ? 0 : 45;
-    window.AK47altInaccuracyStanding = isSelected ? 0 : 5;
-    window.AK47altInaccuracyFromShot = isSelected ? 0 : 10;
-    window.AK47altInaccuracyMovement = isSelected ? 0 : 30;
-    window.AK47recoveryRate = isSelected ? 0.005 : 0.005;
-    window.AK47minKickback = isSelected ? 0 : 0.023;
-    window.AK47maxKickback = isSelected ? 0 : 0.06;
-    window.AK47kickbackRate = isSelected ? 0 : 10;
-    window.AK47kickbackDecreaseRate = isSelected ? 0 : 5e6;
-
-    window.M16fireRate = isSelected ? 9999 : 900;
-    window.M16tagSpeedMult = isSelected ? 0 : 0.8;
-    window.M16subsequentTagSpeedReductionScalar = isSelected ? 0 : 0.55;
-    window.M16inaccuracyStanding = isSelected ? 0 : 8;
-    window.M16inaccuracyFromShot = isSelected ? 0 : 12;
-    window.M16inaccuracyMovement = isSelected ? 0 : 35;
-    window.M16yVelocityInaccuracy = isSelected ? 0 : 4;
-    window.M16inaccuracyFromJump = isSelected ? 0 : 45;
-    window.M16altInaccuracyStanding = isSelected ? 0 : 3;
-    window.M16altInaccuracyFromShot = isSelected ? 0 : 8;
-    window.M16altInaccuracyMovement = isSelected ? 0 : 20;
-    window.M16recoveryRate = isSelected ? 0.005 : 0.005;
-    window.M16minKickback = isSelected ? 0 : 0.022;
-    window.M16maxKickback = isSelected ? 0 : 0.06;
-    window.M16kickbackRate = isSelected ? 0 : 10;
-    window.M16kickbackDecreaseRate = isSelected ? 0 : 5e6;
-
-    window.MP40fireRate = isSelected ? 9999 : 1500;
-    window.MP40tagSpeedMult = isSelected ? 0 : 0.85;
-    window.MP40subsequentTagSpeedReductionScalar = isSelected ? 0 : 0.4;
-    window.MP40inaccuracyStanding = isSelected ? 0 : 16;
-    window.MP40inaccuracyFromShot = isSelected ? 0 : 21;
-    window.MP40inaccuracyMovement = isSelected ? 0 : 6;
-    window.MP40yVelocityInaccuracy = isSelected ? 0 : 4;
-    window.MP40inaccuracyFromJump = isSelected ? 0 : 75;
-    window.MP40altInaccuracyStanding = isSelected ? 0 : 15;
-    window.MP40altInaccuracyFromShot = isSelected ? 0 : 20;
-    window.MP40altInaccuracyMovement = isSelected ? 0 : 5;
-    window.MP40recoveryRate = isSelected ? 0.005 : 0.005;
-    window.MP40minKickback = isSelected ? 0 : 0.022;
-    window.MP40maxKickback = isSelected ? 0 : 0.06;
-    window.MP40kickbackRate = isSelected ? 0 : 10;
-    window.MP40kickbackDecreaseRate = isSelected ? 0 : 5e6;
-
-    window.TAR21fireRate = isSelected ? 9999 : 150;
-    window.TAR21tagSpeedMult = isSelected ? 0 : 0.75;
-    window.TAR21subsequentTagSpeedReductionScalar = isSelected ? 0 : 0.6;
-    window.TAR21inaccuracyStanding = isSelected ? 0 : 12;
-    window.TAR21inaccuracyFromShot = isSelected ? 0 : 100;
-    window.TAR21inaccuracyMovement = isSelected ? 0 : 112;
-    window.TAR21yVelocityInaccuracy = isSelected ? 0 : 4;
-    window.TAR21inaccuracyFromJump = isSelected ? 0 : 75;
-    window.TAR21altInaccuracyStanding = isSelected ? 0 : 6;
-    window.TAR21altInaccuracyFromShot = isSelected ? 0 : 75;
-    window.TAR21altInaccuracyMovement = isSelected ? 0 : 97;
-    window.TAR21recoveryRate = isSelected ? 0.003 : 0.003;
-    window.TAR21minKickback = isSelected ? 0 : 0.04;
-    window.TAR21maxKickback = isSelected ? 0 : 0.05;
-    window.TAR21kickbackRate = isSelected ? 0 : 25;
-    window.TAR21kickbackDecreaseRate = isSelected ? 0 : 5e6;
-
-    window.M1911fireRate = isSelected ? 9999 : 800;
-    window.M1911tagSpeedMult = isSelected ? 0 : 0.8;
-    window.M1911subsequentTagSpeedReductionScalar = isSelected ? 0 : 0.55;
-    window.M1911inaccuracyStanding = isSelected ? 0 : 15;
-    window.M1911inaccuracyFromShot = isSelected ? 0 : 25;
-    window.M1911inaccuracyMovement = isSelected ? 0 : 30;
-    window.M1911yVelocityInaccuracy = isSelected ? 0 : 4;
-    window.M1911inaccuracyFromJump = isSelected ? 0 : 45;
-    window.M1911altInaccuracyStanding = isSelected ? 0 : 15;
-    window.M1911altInaccuracyFromShot = isSelected ? 0 : 25;
-    window.M1911altInaccuracyMovement = isSelected ? 0 : 30;
-    window.M1911recoveryRate = isSelected ? 0.005 : 0.005;
-    window.M1911minKickback = isSelected ? 0 : 0.045;
-    window.M1911maxKickback = isSelected ? 0 : 0.045;
-    window.M1911kickbackRate = isSelected ? 0 : 0;
-    window.M1911kickbackDecreaseRate = isSelected ? 0 : 5e6;
-
-    window.DoubleBarrelfireRate = isSelected ? 9999 : 400;
-    window.DoubleBarreltagSpeedMult = isSelected ? 0 : 0.65;
-    window.DoubleBarrelsubsequentTagSpeedReductionScalar = isSelected ? 0 : 0.6;
-    window.DoubleBarrelinaccuracyStanding = isSelected ? 0 : 200;
-    window.DoubleBarrelinaccuracyFromShot = isSelected ? 0 : 150;
-    window.DoubleBarrelinaccuracyMovement = isSelected ? 0 : 30;
-    window.DoubleBarrelyVelocityInaccuracy = isSelected ? 0 : 7;
-    window.DoubleBarrelinaccuracyFromJump = isSelected ? 0 : 200;
-    window.DoubleBarrelaltInaccuracyStanding = isSelected ? 0 : 150;
-    window.DoubleBarrelaltInaccuracyFromShot = isSelected ? 0 : 100;
-    window.DoubleBarrelaltInaccuracyMovement = isSelected ? 0 : 20;
-    window.DoubleBarrelrecoveryRate = isSelected ? 0.005 : 0.005;
-    window.DoubleBarrelminKickback = isSelected ? 0 : 0.04;
-    window.DoubleBarrelmaxKickback = isSelected ? 0 : 0.05;
-    window.DoubleBarrelkickbackRate = isSelected ? 0 : 0;
-    window.DoubleBarrelkickbackDecreaseRate = isSelected ? 0 : 5e6;
-
-    window.AWPfireRate = isSelected ? 9999 : 50;
-    window.AWPtagSpeedMult = isSelected ? 0 : 0.75;
-    window.AWPsubsequentTagSpeedReductionScalar = isSelected ? 0 : 0.6;
-    window.AWPinaccuracyStanding = isSelected ? 0 : 150;
-    window.AWPinaccuracyFromShot = isSelected ? 0 : 200;
-    window.AWPinaccuracyMovement = isSelected ? 0 : 150;
-    window.AWPyVelocityInaccuracy = isSelected ? 0 : 4;
-    window.AWPinaccuracyFromJump = isSelected ? 0 : 75;
-    window.AWPaltInaccuracyStanding = isSelected ? 0 : 1;
-    window.AWPaltInaccuracyFromShot = isSelected ? 0 : 1;
-    window.AWPaltInaccuracyMovement = isSelected ? 0 : 112;
-    window.AWPrecoveryRate = isSelected ? 0.02 : 0.02;
-    window.AWPminKickback = isSelected ? 0 : 0.1;
-    window.AWPmaxKickback = isSelected ? 0 : 0.1;
-    window.AWPkickbackRate = isSelected ? 0 : 0;
-    window.AWPkickbackDecreaseRate = isSelected ? 0 : 5e6;
-    window.AWPaimZoomFactor = isSelected ? 3.5 : 3.5;
-
-    window.MinigunfireRate = isSelected ? 9999 : 4000;
-    window.MiniguntagSpeedMult = isSelected ? 0 : 0.75;
-    window.MinigunsubsequentTagSpeedReductionScalar = isSelected ? 0 : 0.6;
-    window.MiniguninaccuracyStanding = isSelected ? 0 : 25;
-    window.MiniguninaccuracyFromShot = isSelected ? 0 : 15;
-    window.MiniguninaccuracyMovement = isSelected ? 0 : 20;
-    window.MinigunyVelocityInaccuracy = isSelected ? 0 : 4;
-    window.MiniguninaccuracyFromJump = isSelected ? 0 : 75;
-    window.MinigunaltInaccuracyStanding = isSelected ? 0 : 25;
-    window.MinigunaltInaccuracyFromShot = isSelected ? 0 : 15;
-    window.MinigunaltInaccuracyMovement = isSelected ? 0 : 20;
-    window.MinigunrecoveryRate = isSelected ? 0.01 : 0.01;
-    window.MinigunminKickback = isSelected ? 0 : 0.005;
-    window.MinigunmaxKickback = isSelected ? 0 : 0.005;
-    window.MinigunkickbackRate = isSelected ? 0 : 0;
-    window.MinigunkickbackDecreaseRate = isSelected ? 0 : 1e5;
-}
-
-if (item === 'InfAmmo') {
-    window.AK47clipSize = isSelected ? Infinity : 30;
-    window.M16clipSize = isSelected ? Infinity : 30;
-    window.MP40clipSize = isSelected ? Infinity : 30;
-    window.TAR21clipSize = isSelected ? Infinity : 20;
-    window.M1911clipSize = isSelected ? Infinity : 16;
-    window.DoubleBarrelclipSize = isSelected ? Infinity : 2;
-    window.AWPclipSize = isSelected ? Infinity : 5;
-    window.MinigunclipSize = isSelected ? Infinity : 100;
-}
-
-if (item === 'InstaReload') {
-    window.AK47reloadTime = isSelected ? 0 : 2300;
-    window.M16reloadTime = isSelected ? 0 : 2200;
-    window.MP40reloadTime = isSelected ? 0 : 2500;
-    window.TAR21reloadTime = isSelected ? 0 : 2300;
-    window.M1911reloadTime = isSelected ? 0 : 1700;
-    window.DoubleBarrelreloadTime = isSelected ? 0 : 3000;
-    window.AWPreloadTime = isSelected ? 0 : 3500;
-    window.MinigunreloadTime = isSelected ? 0 : 3000;
-}
 };
-
-                column.appendChild(itemElement);
-                buttonsMap[item] = itemElement;
-
-                // Apply initial button state to global variables when the page loads
-                if (buttonStates[item]) {
-                    itemElement.click();
-                }
-            });
-
-            columnsContainer.appendChild(column);
-        });
-
-        menu.appendChild(columnsContainer);
-
-        let isDragging = false;
-        let offsetX, offsetY;
-
-        menu.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            offsetX = e.clientX - menu.offsetLeft;
-            offsetY = e.clientY - menu.offsetTop;
-            menu.style.transition = 'none';
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (isDragging) {
-                menu.style.left = `${e.clientX - offsetX}px`;
-                menu.style.top = `${e.clientY - offsetY}px`;
-            }
-        });
-
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-        });
-
-        document.body.appendChild(menu);
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key.toLowerCase() === 'l') {
-                const scaffoldButton = buttonsMap['Scaffold'];
-                if (scaffoldButton) {
-                    scaffoldButton.click();
-                }
-            }
-        });
-    };
-    MelonMenu();
-})();
