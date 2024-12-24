@@ -342,7 +342,7 @@ placeUnderPlayer:
                 // Check if the player can place the block below
                 if (o && blockBelowPlayer && ((0, h.b)().posSatisfiesModifyConstraints(this.noa.playerEntity, blockBelowPlayer[0], blockBelowPlayer[1], blockBelowPlayer[2]) || "Moonstone Explosive" === (0, h.b)().getItemName(o))) {
                     
-                    const [U, m, C] = blockBelowPlayer;
+                    const [U, m, >>>>>C<<<<<] = blockBelowPlayer;
             
                     // Handle rotation or block placement type (if applicable)
                     '//
