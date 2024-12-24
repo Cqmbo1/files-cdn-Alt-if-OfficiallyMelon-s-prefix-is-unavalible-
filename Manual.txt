@@ -2,9 +2,30 @@ SecureEdge/Prevent Falloff:
 
 // to find from non-modified js: search: ').preventFallOffEdge'
 
-                        //' to define States and Bodies:
-                        // const physicsBody = U.ents.getPhysicsBody(O);
-                        // const moveState = U.ents.getMoveState(O);
-                        // get vars from: onAdd: function(>>Y<<, P) {}
+                        //''/
 
-                        //' to find var
+                        //' to define States and Bodies:
+
+                        // const physicsBody = >>U<<.ents.getPhysicsBody(>>>O<<<);
+                        // const moveState = >>U<<.ents.getMoveState(>>>O<<<);
+
+                        // get vars from: onAdd: function(>>Y<<, P) {}  & for (const P of >>>X<<<) 
+                        // 1st var: '>><<'; 2nd: '>>><<<'
+
+                        //' to find vars for toggle preventfalloff/secureEdge: 
+
+                        //1st var: '<<>>'
+
+                    //      if (!window.preventfalloff) {
+                    //      if (physicsBody.preventFallOffEdge && !<<P>>._preventFallOffLastTick) {
+                    //          (0, s.ac)();
+                    //      }
+                    //
+                    //      physicsBody.preventFallOffEdge = moveState.crouching;
+                    //        <<P>>._preventFallOffLastTick = moveState.crouching;
+                    //    } else {
+                    //        physicsBody.preventFallOffEdge = true;
+                    //        <<P>>._preventFallOffLastTick = true;
+                    //    }
+                    
+                    // get vars from (const <<P>> of X)
