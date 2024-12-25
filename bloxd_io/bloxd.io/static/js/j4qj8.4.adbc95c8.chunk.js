@@ -13457,7 +13457,7 @@
             }
         };
             
- tick(){
+ tick() {
     if(window.InstaReload === true) {
         u."AK47".reloadTime = 1;
         u.M16.reloadTime = 1;
