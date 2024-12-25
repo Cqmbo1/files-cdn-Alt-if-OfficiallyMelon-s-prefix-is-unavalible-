@@ -13238,7 +13238,7 @@
             C: () => G
         });
         var q = X(1074);
-        let u = {
+        const u = {
             "AK-47": {
                 gunType: "semi_automatic",
                 scopeType: "none",
