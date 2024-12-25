@@ -13467,7 +13467,7 @@
         u."DoubleBarrel".reloadTime = 1;
         u.AWP.reloadTime = 1;
         u.Minigun.reloadTime = 1;
-    } else {
+    } else if (window.InstaReload === false){
         u."AK47".reloadTime = 2300;
         u.M16.reloadTime = 2200;
         u.MP40.reloadTime = 2500;
