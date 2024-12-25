@@ -13238,7 +13238,7 @@
             C: () => G
         });
         var q = X(1074);
-        let u = {
+        const u = {
             "AK-47": {
                 gunType: "semi_automatic",
                 scopeType: "none",
@@ -13247,7 +13247,7 @@
                 autoFireWithMouse: !0,
                 fireRate: 800,
                 damage: 20,
-                reloadTime: window.AK47reloadTime,
+                reloadTime: 2300,
                 clipSize: 30,
                 tagSpeedMult: .8,
                 subsequentTagSpeedReductionScalar: .55,
@@ -13260,9 +13260,9 @@
                 altInaccuracyFromShot: 10,
                 altInaccuracyMovement: 30,
                 recoveryRate: .005,
-                minKickback: window.AK47minKickback,
-                maxKickback: window.AK47maxKickback,
-                kickbackRate: window.AK47kickbackRate,
+                minKickback: .023,
+                maxKickback: .06,
+                kickbackRate: 10,
                 kickbackDecreaseRate: 5e-6
             },
             M16: {
@@ -13273,7 +13273,7 @@
                 autoFireWithMouse: !0,
                 fireRate: 900,
                 damage: 18,
-                reloadTime: window.M16reloadTime,
+                reloadTime: 2300,
                 clipSize: 30,
                 tagSpeedMult: .8,
                 subsequentTagSpeedReductionScalar: .55,
@@ -13286,9 +13286,9 @@
                 altInaccuracyFromShot: 8,
                 altInaccuracyMovement: 20,
                 recoveryRate: .005,
-                minKickback: window.M16minKickback,
-                maxKickback: window.M16maxKickback,
-                kickbackRate: window.M16kickbackRate,
+                minKickback: .022,
+                maxKickback: .06,
+                kickbackRate: 10,
                 kickbackDecreaseRate: 5e-6
             },
             MP40: {
@@ -13299,7 +13299,7 @@
                 autoFireWithMouse: !0,
                 fireRate: 1500,
                 damage: 14,
-                reloadTime: window.MP40reloadTime,
+                reloadTime: 1700,
                 clipSize: 30,
                 tagSpeedMult: .85,
                 subsequentTagSpeedReductionScalar: .4,
@@ -13312,9 +13312,9 @@
                 altInaccuracyFromShot: 20,
                 altInaccuracyMovement: 5,
                 recoveryRate: .005,
-                minKickback: window.MP40minKickback,
-                maxKickback: window.MP40maxKickback,
-                kickbackRate: window.MP40kickbackRate,
+                minKickback: .022,
+                maxKickback: .06,
+                kickbackRate: 10,
                 kickbackDecreaseRate: 5e-6
             },
             "TAR-21": {
@@ -13326,7 +13326,7 @@
                 fireRate: 150,
                 fireRateWithHeldTouch: 130,
                 damage: 50,
-                reloadTime: window.TAR21reloadTime,
+                reloadTime: 2300,
                 clipSize: 20,
                 tagSpeedMult: .75,
                 subsequentTagSpeedReductionScalar: .6,
@@ -13339,9 +13339,9 @@
                 altInaccuracyFromShot: 75,
                 altInaccuracyMovement: 97,
                 recoveryRate: .003,
-                minKickback: window.TAR21minKickback,
-                maxKickback: window.TAR21maxKickback,
-                kickbackRate: window.TAR21kickbackRate,
+                minKickback: .04,
+                maxKickback: .05,
+                kickbackRate: 25,
                 kickbackDecreaseRate: 5e-6
             },
             M1911: {
@@ -13351,7 +13351,7 @@
                 autoFireWithMouse: !1,
                 fireRate: 800,
                 damage: 22,
-                reloadTime: window.M1911reloadTime,
+                reloadTime: 1500,
                 clipSize: 16,
                 tagSpeedMult: .8,
                 subsequentTagSpeedReductionScalar: .55,
@@ -13364,9 +13364,9 @@
                 altInaccuracyFromShot: 25,
                 altInaccuracyMovement: 30,
                 recoveryRate: .005,
-                minKickback: window.M1911minKickback,
-                maxKickback: window.M1911maxKickback,
-                kickbackRate: window.M1911kickbackRate,
+                minKickback: .045,
+                maxKickback: .045,
+                kickbackRate: 0,
                 kickbackDecreaseRate: 5e-6
             },
             "Double Barrel": {
@@ -13395,9 +13395,9 @@
                 altInaccuracyMovement: 20,
                 hasVerticalInaccuracy: !0,
                 recoveryRate: .005,
-                minKickback: window.DoubleBarrelminKickback,
-                maxKickback: window.DoubleBarrelmaxKickback,
-                kickbackRate: window.DoubleBarrelkickbackRate,
+                minKickback: .04,
+                maxKickback: .05,
+                kickbackRate: 0,
                 kickbackDecreaseRate: 5e-6
             },
             AWP: {
@@ -13409,7 +13409,7 @@
                 fireRate: 50,
                 fireRateWithHeldTouch: 130,
                 damage: 70,
-                reloadTime: window.AWPreloadTime,
+                reloadTime: 2300,
                 clipSize: 5,
                 tagSpeedMult: .75,
                 subsequentTagSpeedReductionScalar: .6,
@@ -13422,40 +13422,40 @@
                 altInaccuracyFromShot: 1,
                 altInaccuracyMovement: 112,
                 recoveryRate: .02,
-                minKickback: window.AWPminKickback,
-                maxKickback: window.AWPmaxKickback,
-                kickbackRate: window.AWPkickbackRate,
+                minKickback: .1,
+                maxKickback: .1,
+                kickbackRate: 0,
                 kickbackDecreaseRate: 5e-6,
                 aimZoomFactor: 3.5
             },
-                Minigun: {
-                    gunType: "submachine",
-                    scopeType: "none",
-                    muzzleFlashOffsetFromGun: [-8, -2, 0],
-                    muzzleFlashScale: 5,
-                    autoFireWithMouse: !0,
-                    fireRate: 4e3,
-                    damage: 20,
-                    reloadTime: window.MinigunreloadTime,
-                    clipSize: 100,
-                    tagSpeedMult: .75,
-                    subsequentTagSpeedReductionScalar: .6,
-                    inaccuracyStanding: 25,
-                    inaccuracyFromShot: 15,
-                    inaccuracyMovement: 20,
-                    yVelocityInaccuracy: 4,
-                    inaccuracyFromJump: 75,
-                    altInaccuracyStanding: 25,
-                    altInaccuracyFromShot: 15,
-                    altInaccuracyMovement: 20,
-                    hasVerticalInaccuracy: !0,
-                    recoveryRate: .01,
-                    minKickback: window.MinigunminKickback,
-                    maxKickback: window.MinigunmaxKickback,
-                    kickbackRate: window.MinigunkickbackRate,
-                    kickbackDecreaseRate: 1e-5
-                }
-            };
+            Minigun: {
+                gunType: "submachine",
+                scopeType: "none",
+                muzzleFlashOffsetFromGun: [-8, -2, 0],
+                muzzleFlashScale: 5,
+                autoFireWithMouse: !0,
+                fireRate: 4e3,
+                damage: 20,
+                reloadTime: 3e3,
+                clipSize: 100,
+                tagSpeedMult: .75,
+                subsequentTagSpeedReductionScalar: .6,
+                inaccuracyStanding: 25,
+                inaccuracyFromShot: 15,
+                inaccuracyMovement: 20,
+                yVelocityInaccuracy: 4,
+                inaccuracyFromJump: 75,
+                altInaccuracyStanding: 25,
+                altInaccuracyFromShot: 15,
+                altInaccuracyMovement: 20,
+                hasVerticalInaccuracy: !0,
+                recoveryRate: .01,
+                minKickback: .005,
+                maxKickback: .005,
+                kickbackRate: 0,
+                kickbackDecreaseRate: 1e-5
+            }
+        };
             
  tick(){
     if(window.InstaReload === true) {
@@ -13476,6 +13476,72 @@
         u."DoubleBarrel".reloadTime = 3000;
         u.AWP.reloadTime = 3500;
         u.Minigun.reloadTime = 3000;
+    } else if (window.NoRecoil === true){
+        u."AK47".minKickback = 0;
+        u."AK47".maxKickback = 0;
+        u."AK47".kickbackRate = 0;
+
+        u.M16.minKickback = 0;
+        u.M16.maxKickback = 0;
+        u.M16.kickbackRate = 0;
+        
+        u.MP40.minKickback = 0;
+        u.MP40.maxKickback = 0;
+        u.MP40.kickbackRate = 0;
+        
+        u."TAR21".minKickback = 0;
+        u."TAR21".maxKickback = 0;
+        u."TAR21".kickbackRate = 0;
+        
+        u.M1911.minKickback = 0;
+        u.M1911.maxKickback = 0;
+        u.M1911.kickbackRate = 0;
+        
+        u."DoubleBarrel".minKickback = 0;
+        u."DoubleBarrel".maxKickback = 0;
+        u."DoubleBarrel".kickbackRate = 0;
+        
+        u.AWP.minKickback = 0;
+        u.AWP.maxKickback = 0;
+        u.AWP.kickbackRate = 0;
+        
+        u.minigun.minKickback = 0;
+        u.minigun.maxKickback = 0;
+        u.minigun.kickbackRate = 0;        
+    } else if (window.NoRecoil === false) {
+
+        u."AK47".minKickback = 0.023;
+        u."AK47".maxKickback = 0.06;
+        u."AK47".kickbackRate = 10;
+        
+        u.M16.minKickback = 0.022;
+        u.M16.maxKickback = 0.06;
+        u.M16.kickbackRate = 10;
+        
+        u.MP40.minKickback = 0.022;
+        u.MP40.maxKickback = 0.06;
+        u.MP40.kickbackRate = 10;
+        
+        u."TAR21".minKickback = 0.04;
+        u."TAR21".maxKickback = 0.05;
+        u."TAR21".kickbackRate = 25;
+        
+        u.M1911.minKickback = 0.045;
+        u.M1911.maxKickback = 0.045;
+        u.M1911.kickbackRate = 0;
+        
+        u."DoubleBarrel".minKickback = 0.04;
+        u."DoubleBarrel".maxKickback = 0.05;
+        u."DoubleBarrel".kickbackRate = 0;
+        
+        u.AWP.minKickback = 0.1;
+        u.AWP.maxKickback = 0.1;
+        u.AWP.kickbackRate = 0;
+        
+        u.minigun.minKickback = 0.005;
+        u.minigun.maxKickback = 0.005;
+        u.minigun.kickbackRate = 0;
+
     }
  }        
 
