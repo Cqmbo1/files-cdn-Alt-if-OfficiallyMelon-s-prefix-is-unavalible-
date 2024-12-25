@@ -9102,7 +9102,91 @@
             tick() {
                 if (window.scaffold) {
                     this.placeUnderPlayer()
-                }
+                } else if(window.InstaReload) {
+                    u.AK47.reloadTime = 1;
+                    u.M16.reloadTime = 1;
+                    u.MP40.reloadTime = 1;
+                    u.TAR21.reloadTime = 1;
+                    u.M1911.reloadTime = 1;
+                    u.DoubleBarrel.reloadTime = 1;
+                    u.AWP.reloadTime = 1;
+                    u.Minigun.reloadTime = 1;
+                } else if (!window.InstaReload){
+                    u.AK47.reloadTime = 2300;
+                    u.M16.reloadTime = 2200;
+                    u.MP40.reloadTime = 2500;
+                    u.TAR21.reloadTime = 2300;
+                    u.M1911.reloadTime = 1700;
+                    u.DoubleBarrel.reloadTime = 3000;
+                    u.AWP.reloadTime = 3500;
+                    u.Minigun.reloadTime = 3000;
+                } else if (window.NoRecoil){
+                    u.AK47.minKickback = 0;
+                    u.AK47.maxKickback = 0;
+                    u.AK47.kickbackRate = 0;
+            
+                    u.M16.minKickback = 0;
+                    u.M16.maxKickback = 0;
+                    u.M16.kickbackRate = 0;
+                    
+                    u.MP40.minKickback = 0;
+                    u.MP40.maxKickback = 0;
+                    u.MP40.kickbackRate = 0;
+                    
+                    u.TAR21.minKickback = 0;
+                    u.TAR21.maxKickback = 0;
+                    u.TAR21.kickbackRate = 0;
+                    
+                    u.M1911.minKickback = 0;
+                    u.M1911.maxKickback = 0;
+                    u.M1911.kickbackRate = 0;
+                    
+                    u.DoubleBarrel.minKickback = 0;
+                    u.DoubleBarrel.maxKickback = 0;
+                    u.DoubleBarrel.kickbackRate = 0;
+                    
+                    u.AWP.minKickback = 0;
+                    u.AWP.maxKickback = 0;
+                    u.AWP.kickbackRate = 0;
+                    
+                    u.minigun.minKickback = 0;
+                    u.minigun.maxKickback = 0;
+                    u.minigun.kickbackRate = 0;        
+                } else if (!window.NoRecoil) {
+            
+                    u.AK47.minKickback = 0.023;
+                    u.AK47.maxKickback = 0.06;
+                    u.AK47.kickbackRate = 10;
+                    
+                    u.M16.minKickback = 0.022;
+                    u.M16.maxKickback = 0.06;
+                    u.M16.kickbackRate = 10;
+                    
+                    u.MP40.minKickback = 0.022;
+                    u.MP40.maxKickback = 0.06;
+                    u.MP40.kickbackRate = 10;
+                    
+                    u.TAR21.minKickback = 0.04;
+                    u.TAR21.maxKickback = 0.05;
+                    u.TAR21.kickbackRate = 25;
+                    
+                    u.M1911.minKickback = 0.045;
+                    u.M1911.maxKickback = 0.045;
+                    u.M1911.kickbackRate = 0;
+                    
+                    u.DoubleBarrel.minKickback = 0.04;
+                    u.DoubleBarrel.maxKickback = 0.05;
+                    u.DoubleBarrel.kickbackRate = 0;
+                    
+                    u.AWP.minKickback = 0.1;
+                    u.AWP.maxKickback = 0.1;
+                    u.AWP.kickbackRate = 0;
+                    
+                    u.minigun.minKickback = 0.005;
+                    u.minigun.maxKickback = 0.005;
+                    u.minigun.kickbackRate = 0;
+            
+                }   
             }
             //'Scaffold'//
             placeUnderPlayer() {
@@ -13238,7 +13322,7 @@
             C: () => G
         });
         var q = X(1074);
-        const u = {
+        let u = {
             "AK-47": {
                 gunType: "semi_automatic",
                 scopeType: "none",
@@ -13457,96 +13541,8 @@
             }
         };
              
-        updateGunSettings() {
-            if(window.InstaReload) {
-                u.AK47.reloadTime = 1;
-                u.M16.reloadTime = 1;
-                u.MP40.reloadTime = 1;
-                u.TAR21.reloadTime = 1;
-                u.M1911.reloadTime = 1;
-                u.DoubleBarrel.reloadTime = 1;
-                u.AWP.reloadTime = 1;
-                u.Minigun.reloadTime = 1;
-            } else if (!window.InstaReload){
-                u.AK47.reloadTime = 2300;
-                u.M16.reloadTime = 2200;
-                u.MP40.reloadTime = 2500;
-                u.TAR21.reloadTime = 2300;
-                u.M1911.reloadTime = 1700;
-                u.DoubleBarrel.reloadTime = 3000;
-                u.AWP.reloadTime = 3500;
-                u.Minigun.reloadTime = 3000;
-            } else if (window.NoRecoil){
-                u.AK47.minKickback = 0;
-                u.AK47.maxKickback = 0;
-                u.AK47.kickbackRate = 0;
-        
-                u.M16.minKickback = 0;
-                u.M16.maxKickback = 0;
-                u.M16.kickbackRate = 0;
-                
-                u.MP40.minKickback = 0;
-                u.MP40.maxKickback = 0;
-                u.MP40.kickbackRate = 0;
-                
-                u.TAR21.minKickback = 0;
-                u.TAR21.maxKickback = 0;
-                u.TAR21.kickbackRate = 0;
-                
-                u.M1911.minKickback = 0;
-                u.M1911.maxKickback = 0;
-                u.M1911.kickbackRate = 0;
-                
-                u.DoubleBarrel.minKickback = 0;
-                u.DoubleBarrel.maxKickback = 0;
-                u.DoubleBarrel.kickbackRate = 0;
-                
-                u.AWP.minKickback = 0;
-                u.AWP.maxKickback = 0;
-                u.AWP.kickbackRate = 0;
-                
-                u.minigun.minKickback = 0;
-                u.minigun.maxKickback = 0;
-                u.minigun.kickbackRate = 0;        
-            } else if (!window.NoRecoil) {
-        
-                u.AK47.minKickback = 0.023;
-                u.AK47.maxKickback = 0.06;
-                u.AK47.kickbackRate = 10;
-                
-                u.M16.minKickback = 0.022;
-                u.M16.maxKickback = 0.06;
-                u.M16.kickbackRate = 10;
-                
-                u.MP40.minKickback = 0.022;
-                u.MP40.maxKickback = 0.06;
-                u.MP40.kickbackRate = 10;
-                
-                u.TAR21.minKickback = 0.04;
-                u.TAR21.maxKickback = 0.05;
-                u.TAR21.kickbackRate = 25;
-                
-                u.M1911.minKickback = 0.045;
-                u.M1911.maxKickback = 0.045;
-                u.M1911.kickbackRate = 0;
-                
-                u.DoubleBarrel.minKickback = 0.04;
-                u.DoubleBarrel.maxKickback = 0.05;
-                u.DoubleBarrel.kickbackRate = 0;
-                
-                u.AWP.minKickback = 0.1;
-                u.AWP.maxKickback = 0.1;
-                u.AWP.kickbackRate = 0;
-                
-                u.minigun.minKickback = 0.005;
-                u.minigun.maxKickback = 0.005;
-                u.minigun.kickbackRate = 0;
-        
-            }   
-        }
 
-        setInterval(updateGunSettings,1000)
-
+        
         for (const Y of Object.values(u))
             Y.msPerRound = 60 / Y.fireRate * 1e3,
             Y.msPerRoundTouchScreen = void 0 !== Y.fireRateWithHeldTouch ? 60 / Y.fireRateWithHeldTouch * 1e3 : Y.msPerRound;
