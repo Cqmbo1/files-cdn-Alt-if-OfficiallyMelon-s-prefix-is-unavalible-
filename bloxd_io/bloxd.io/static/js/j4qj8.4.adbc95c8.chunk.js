@@ -13457,7 +13457,27 @@
                 }
             };
             
-        
+ tick(){
+    if(window.InstaReload === true) {
+        u."AK47".reloadTime = 1;
+        u.M16.reloadTime = 1;
+        u.MP40.reloadTime = 1;
+        u."TAR21".reloadTime = 1;
+        u.M1911.reloadTime = 1;
+        u."DoubleBarrel".reloadTime = 1;
+        u.AWP.reloadTime = 1;
+        u.Minigun.reloadTime = 1;
+    } else {
+        u."AK47".reloadTime = 2300;
+        u.M16.reloadTime = 2200;
+        u.MP40.reloadTime = 2500;
+        u."TAR21".reloadTime = 2300;
+        u.M1911.reloadTime = 1700;
+        u."DoubleBarrel".reloadTime = 3000;
+        u.AWP.reloadTime = 3500;
+        u.Minigun.reloadTime = 3000;
+    }
+ }        
 
         
         for (const Y of Object.values(u))
