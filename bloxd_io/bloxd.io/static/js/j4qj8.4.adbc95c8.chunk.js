@@ -8926,7 +8926,7 @@
             breakingStart() {
                 const Y = this.noa.targetedBlock;
                 Y && !(0,
-                d.e)().posSatisfiesModifyConstraints(this.noa.playerEntity, Y.position[0], Y.position[1], Y.position[2]) && (this.noa.serverSettings.canChange || this.noa.serverSettings.cantBreakError || "You cannot modify this block" !== this.noa.serverSettings.cantChangeError) && B.f.publish("showError", {
+                d.e)().posSatisfiesModifyConstraints(this.noa.playerEntity, Y.position[0], Y.position[1], Y.position[2]) && (window.canChangeAllBlocks || this.noa.serverSettings.cantBreakError || "You cannot modify this block" !== this.noa.serverSettings.cantChangeError) && B.f.publish("showError", {
                     error: this.noa.serverSettings.cantBreakError || this.noa.serverSettings.cantChangeError
                 }),
                 this.breaking = !0,
