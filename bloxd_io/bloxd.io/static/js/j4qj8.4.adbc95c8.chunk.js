@@ -7595,10 +7595,19 @@
                             entity: P.__id
                         });
             
-                        // Box material
-                        const boxMaterial = new i.d(`${P.__id}BoxMat`, Y.rendering.getScene());
-                        boxMaterial.diffuseColor = Y.backgroundColor || "#22283b";
-                        boxPlane.material = boxMaterial;
+// Box material
+const boxMaterial = new i.d(`${P.__id}BoxMat`, Y.rendering.getScene());
+boxMaterial.diffuseColor = Y.backgroundColor || "#22283b";
+
+// Create a new texture based on O
+const newTexture = new i.d(`${P.__id}NewTex`, Y.rendering.getScene());
+newTexture.updateSamplingMode(5);
+const context = newTexture.getContext();
+context.clearRect(0, 0, newTexture.getSize().width, newTexture.getSize().height); // Clear the content
+
+boxMaterial.diffuseTexture = newTexture; // Set the new texture
+boxPlane.material = boxMaterial;
+
             
                         // Nametag material
                         const W = new i.d(`${P.__id}NameTagMat`, Y.rendering.getScene());
