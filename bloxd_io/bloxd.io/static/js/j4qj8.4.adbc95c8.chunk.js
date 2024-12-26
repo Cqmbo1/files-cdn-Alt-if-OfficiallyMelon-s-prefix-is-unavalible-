@@ -7577,7 +7577,7 @@
                         });
             
                         // Create the box plane
-                        const boxHeight = 0.05, // Height of the box
+                        const boxHeight = 1, // Height of the box
                             boxWidth = L.scaling.x; // Match the nametag width
                         const boxPlane = s.g.CreatePlane(`${P.__id}Box`, {
                             height: boxHeight,
