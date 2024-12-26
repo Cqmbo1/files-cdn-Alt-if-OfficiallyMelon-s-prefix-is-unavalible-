@@ -7499,24 +7499,25 @@
                 let P = 30;
                 for (const X of Y.content) {
                     G.getContext().font = y(X);
-                    P += G.getContext().measureText(b(X)).width + t(X)
+                    P += G.getContext().measureText(b(X)).width + t(X);
                 }
-                return P
+                return P;
             }
+            
             function M(P, X) {
                 !function(Y, P) {
                     P.updateSamplingMode(5);
                     const X = P.getContext();
                     let q = 15;
-                    X.fillStyle = Y.backgroundColor || "#22283b",
+                    X.fillStyle = Y.backgroundColor || "#22283b";
                     X.fillRect(0, 0, x(Y), a);
                     for (const u of Y.content) {
-                        const Y = b(u)
-                          , s = y(u)
-                          , e = K(u) ? 49 : 47;
+                        const Y = b(u),
+                              s = y(u),
+                              e = K(u) ? 49 : 47;
                         X.font = s;
-                        const O = X.measureText(Y).width
-                          , i = !K(u) && u.mainRGB;
+                        const O = X.measureText(Y).width,
+                              i = !K(u) && u.mainRGB;
                         i && (X.fillStyle = i,
                         X.fillRect(q - 15, 0, O + 30, a));
                         const r = K(u) ? "black" : u.nameTag.iconShadowRGB;
@@ -7526,11 +7527,12 @@
                                     P.drawText(Y, q + 2 * X, e + 2 * u, s, r, null, !0, !1);
                         const L = (K(u) ? null : u.nameTag.iconRGB) || "white";
                         P.drawText(Y, q, e, s, L, null, !0, !1),
-                        q += O + t(u)
+                        q += O + t(u);
                     }
-                    P.update(!0)
-                }(X, Y.ents.getMeshData(P.planeEId).mesh.material.diffuseTexture)
+                    P.update(!0);
+                }(X, Y.ents.getMeshData(P.planeEId).mesh.material.diffuseTexture);
             }
+            
             function I(P, X, e) {
                 var O;
                 const L = function(Y, P, X) {
@@ -7557,14 +7559,14 @@
                         Y.ents.deleteEntity(P.boxEId); // Delete the previous box plane if it exists
             
                         const e = x(X),
-                            O = new r.d(`${P.__id}NameTagTex`, {
-                                height: a,
-                                width: e
-                            }, Y.rendering.getScene()),
-                            L = s.g.CreatePlane(`${P.__id}NameTag`, {
-                                height: 0.2,
-                                width: 0.003125 * e
-                            }, Y.rendering.getScene());
+                              O = new r.d(`${P.__id}NameTagTex`, {
+                                  height: a,
+                                  width: e
+                              }, Y.rendering.getScene()),
+                              L = s.g.CreatePlane(`${P.__id}NameTag`, {
+                                  height: 0.2,
+                                  width: 0.003125 * e
+                              }, Y.rendering.getScene());
             
                         // Create the nametag plane
                         P.planeEId = Y.entities.add([0, 0, 0], 1, 1, L, [0, 0, 0]);
@@ -7578,7 +7580,7 @@
             
                         // Create the box plane
                         const boxHeight = 1, // Height of the box
-                            boxWidth = L.scaling.x; // Match the nametag width
+                              boxWidth = L.scaling.x; // Match the nametag width
                         const boxPlane = s.g.CreatePlane(`${P.__id}Box`, {
                             height: boxHeight,
                             width: boxWidth
@@ -7624,6 +7626,7 @@
                     M(P, L);
                 }
             }
+            
             const Z = 8;
             function H(P) {
                 var X, q;
