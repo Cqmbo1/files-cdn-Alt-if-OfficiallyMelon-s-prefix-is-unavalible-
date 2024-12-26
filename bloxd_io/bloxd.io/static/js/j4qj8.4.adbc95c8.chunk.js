@@ -7595,8 +7595,8 @@
             
                         // Box material
                         const boxMaterial = new i.d(`${P.__id}BoxMat`, Y.rendering.getScene());
-                        boxMaterial.diffuseColor = new q.b(0.2, 0.2, 0.8); // Blue box color
-                        boxMaterial.emissiveColor = new q.b(0.2, 0.2, 0.8);
+                        boxMaterial.diffuseColor = O; // Blue box color
+                        boxMaterial.emissiveColor = O;
                         boxPlane.material = boxMaterial;
             
                         // Nametag material
