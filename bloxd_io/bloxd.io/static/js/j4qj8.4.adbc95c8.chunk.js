@@ -7594,16 +7594,18 @@
                         Y.ents.addComponent(P.boxEId, Y.ents.names.followsEntity, {
                             entity: P.__id
                         });
-            
-// Box material
-const boxMaterial = new i.d(`${P.__id}BoxMat`, Y.rendering.getScene());
-boxMaterial.diffuseColor = Y.backgroundColor || "#22283b";
 
-// Create a new texture based on O
+                        // Create a new texture based on O
 const newTexture = new i.d(`${P.__id}NewTex`, Y.rendering.getScene());
 newTexture.updateSamplingMode(5);
 const context = newTexture.getContext();
 context.clearRect(0, 0, newTexture.getSize().width, newTexture.getSize().height); // Clear the content
+            
+// Box material
+const boxMaterial = new i.d(`${P.__id}BoxMat`, Y.rendering.getScene());
+boxMaterial.diffuseColor = newTexture || "#22283b";
+
+
 
 boxMaterial.diffuseTexture = newTexture; // Set the new texture
 boxPlane.material = boxMaterial;
