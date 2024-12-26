@@ -5952,7 +5952,7 @@
             }
             )),
             Y.inputs.down.on("Zoom", (P => {
-                "inGame" !== z.e.gameState || Y.serverSettings.canUseZoomKey || W.f.publish("showError", {
+                "inGame" !== z.e.gameState || window.canZoom || W.f.publish("showError", {
                     error: "Zoom is disabled",
                     timeoutLength: 2e3
                 })
