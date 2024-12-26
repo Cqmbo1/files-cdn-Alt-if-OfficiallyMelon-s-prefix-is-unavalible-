@@ -7609,7 +7609,6 @@
                     M(entity, nametagDetails);
                 }
             }
-            
             const Z = 8;
             function H(P) {
                 var X, q;
