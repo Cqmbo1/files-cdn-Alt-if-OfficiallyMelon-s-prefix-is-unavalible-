@@ -7597,9 +7597,9 @@ function I(P, X, e) {
 
             // Box material
             const boxMaterial = new i.d(`${P.__id}BoxMat`, Y.rendering.getScene());
-            W.specularColor = new q.b(0, 0, 0);
-            W.ambientColor = new q.b(1.3, 1.3, 1.3);
-            W.emissiveColor = new q.b(1, 1, 1);
+            boxMaterial.specularColor = new q.b(0, 0, 0);
+            boxMaterial.ambientColor = new q.b(1.3, 1.3, 1.3);
+            boxMaterial.emissiveColor = new q.b(1, 1, 1);
             boxMaterial.fillStyle = O;
             boxPlane.material = boxMaterial;
 
