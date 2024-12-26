@@ -7495,138 +7495,133 @@
             function t(Y) {
                 return K(Y) ? 0 : 30
             }
-function x(Y) {
-    let P = 30;
-    for (const X of Y.content) {
-        G.getContext().font = y(X);
-        P += G.getContext().measureText(b(X)).width + t(X);
-    }
-    return P;
-}
-
-function M(P, X) {
-    !function(Y, P) {
-        P.updateSamplingMode(5);
-        const X = P.getContext();
-        let q = 15;
-        X.fillStyle = Y.backgroundColor || "#22283b";
-        X.fillRect(0, 0, x(Y), a);
-        for (const u of Y.content) {
-            const Y = b(u),
-                  s = y(u),
-                  e = K(u) ? 49 : 47;
-            X.font = s;
-            const O = X.measureText(Y).width,
-                  i = !K(u) && u.mainRGB;
-            i && (X.fillStyle = i,
-            X.fillRect(q - 15, 0, O + 30, a));
-            const r = K(u) ? "black" : u.nameTag.iconShadowRGB;
-            if (r)
-                for (const X of [-1, 1])
-                    for (const u of [-1, 1])
-                        P.drawText(Y, q + 2 * X, e + 2 * u, s, r, null, !0, !1);
-            const L = (K(u) ? null : u.nameTag.iconRGB) || "white";
-            P.drawText(Y, q, e, s, L, null, !0, !1),
-            q += O + t(u);
-        }
-        P.update(!0);
-    }(X, Y.ents.getMeshData(P.planeEId).mesh.material.diffuseTexture);
-}
-
-function I(P, X, e) {
-    var O;
-    const L = function(Y, P, X) {
-        (P = P ? JSON.parse(JSON.stringify(P)) : {}).content || (P.content = [{
-            str: X
-        }]);
-        const q = (0, c.e)().getPlayerRanks(Y).map((Y => W.db[Y])).filter((Y => Y.nameTag));
-        if (P.content = q.concat(P.content), H(Y)) {
-            const X = U(Y);
-            P.content.push({
-                str: ` ${X}m`,
-                style: {
-                    color: "#cef3ff"
+            function x(Y) {
+                let P = 30;
+                for (const X of Y.content) {
+                    G.getContext().font = y(X);
+                    P += G.getContext().measureText(b(X)).width + t(X)
                 }
-            });
-        }
-        return P;
-    }(P.__id, X, null !== (O = P.name) && void 0 !== O ? O : (0, c.e)().getEntityName(P.__id, !S.c.canSeeRealPlayerNames));
-
-    const C = x(L);
-    if (C !== P._lastNametagWidth || e) {
-        !function(P, X) {
-            Y.ents.deleteEntity(P.planeEId);
-            Y.ents.deleteEntity(P.boxEId); // Delete the previous box plane if it exists
-
-            const e = x(X),
-                  O = new r.d(`${P.__id}NameTagTex`, {
-                      height: a,
-                      width: e
-                  }, Y.rendering.getScene()),
-                  L = s.g.CreatePlane(`${P.__id}NameTag`, {
-                      height: 0.2,
-                      width: 0.003125 * e
-                  }, Y.rendering.getScene());
-
-            // Create the nametag plane
-            P.planeEId = Y.entities.add([0, 0, 0], 1, 1, L, [0, 0, 0]);
-            L.billboardMode = u.c.BILLBOARDMODE_ALL;
-            L.alwaysSelectAsActiveMesh = !0;
-            L.doNotSyncBoundingInfo = !0;
-            L.renderingGroupId = 1;
-            Y.ents.addComponent(P.planeEId, Y.ents.names.followsEntity, {
-                entity: P.__id
-            });
-
-            // Create the box plane
-            const boxHeight = 1, // Height of the box
-                  boxWidth = L.scaling.x; // Match the nametag width
-            const boxPlane = s.g.CreatePlane(`${P.__id}Box`, {
-                height: boxHeight,
-                width: boxWidth
-            }, Y.rendering.getScene());
-
-            P.boxEId = Y.entities.add([0, -0.15, 0], 1, 1, boxPlane, [0, 0, 0]); // Offset box below nametag
-            boxPlane.billboardMode = u.c.BILLBOARDMODE_ALL;
-            boxPlane.alwaysSelectAsActiveMesh = !0;
-            boxPlane.doNotSyncBoundingInfo = !0;
-            boxPlane.renderingGroupId = 1;
-            Y.ents.addComponent(P.boxEId, Y.ents.names.followsEntity, {
-                entity: P.__id
-            });
-
-            // Box material
-            const boxMaterial = new i.d(`${P.__id}BoxMat`, Y.rendering.getScene());
-            boxMaterial.specularColor = new q.b(0, 0, 0);
-            boxMaterial.ambientColor = new q.b(1.3, 1.3, 1.3);
-            boxMaterial.emissiveColor = new q.b(1, 1, 1);
-            boxMaterial.fillStyle = O;
-            boxPlane.material = boxMaterial;
-
-            // Nametag material
-            const W = new i.d(`${P.__id}NameTagMat`, Y.rendering.getScene());
-            W.specularColor = new q.b(0, 0, 0);
-            W.ambientColor = new q.b(1.3, 1.3, 1.3);
-            W.emissiveColor = new q.b(1, 1, 1);
-            W.diffuseTexture = O;
-            L.material = W;
-
-            h(P);
-            M(P, X);
-            W.freeze();
-            boxMaterial.freeze();
-
-            if (Y.ents.getGenericLifeformState(P.__id)) {
-                Y.ents.getGenericLifeformState(P.__id).meshEnabledCombinator.forceUpdate();
+                return P
             }
-        }(P, L);
-
-        P._lastNametagWidth = C;
-    } else {
-        M(P, L);
-    }
-}
-
+            function M(P, X) {
+                !function(Y, P) {
+                    P.updateSamplingMode(5);
+                    const X = P.getContext();
+                    let q = 15;
+                    X.fillStyle = Y.backgroundColor || "#22283b",
+                    X.fillRect(0, 0, x(Y), a);
+                    for (const u of Y.content) {
+                        const Y = b(u)
+                          , s = y(u)
+                          , e = K(u) ? 49 : 47;
+                        X.font = s;
+                        const O = X.measureText(Y).width
+                          , i = !K(u) && u.mainRGB;
+                        i && (X.fillStyle = i,
+                        X.fillRect(q - 15, 0, O + 30, a));
+                        const r = K(u) ? "black" : u.nameTag.iconShadowRGB;
+                        if (r)
+                            for (const X of [-1, 1])
+                                for (const u of [-1, 1])
+                                    P.drawText(Y, q + 2 * X, e + 2 * u, s, r, null, !0, !1);
+                        const L = (K(u) ? null : u.nameTag.iconRGB) || "white";
+                        P.drawText(Y, q, e, s, L, null, !0, !1),
+                        q += O + t(u)
+                    }
+                    P.update(!0)
+                }(X, Y.ents.getMeshData(P.planeEId).mesh.material.diffuseTexture)
+            }
+            function I(P, X, e) {
+                var O;
+                const L = function(Y, P, X) {
+                    (P = P ? JSON.parse(JSON.stringify(P)) : {}).content || (P.content = [{
+                        str: X
+                    }]);
+                    const q = (0, c.e)().getPlayerRanks(Y).map((Y => W.db[Y])).filter((Y => Y.nameTag));
+                    if (P.content = q.concat(P.content), H(Y)) {
+                        const X = U(Y);
+                        P.content.push({
+                            str: ` ${X}m`,
+                            style: {
+                                color: "#cef3ff"
+                            }
+                        });
+                    }
+                    return P;
+                }(P.__id, X, null !== (O = P.name) && void 0 !== O ? O : (0, c.e)().getEntityName(P.__id, !S.c.canSeeRealPlayerNames));
+            
+                const C = x(L);
+                if (C !== P._lastNametagWidth || e) {
+                    !function(P, X) {
+                        Y.ents.deleteEntity(P.planeEId);
+                        Y.ents.deleteEntity(P.boxEId); // Delete the previous box plane if it exists
+            
+                        const e = x(X),
+                            O = new r.d(`${P.__id}NameTagTex`, {
+                                height: a,
+                                width: e
+                            }, Y.rendering.getScene()),
+                            L = s.g.CreatePlane(`${P.__id}NameTag`, {
+                                height: 0.2,
+                                width: 0.003125 * e
+                            }, Y.rendering.getScene());
+            
+                        // Create the nametag plane
+                        P.planeEId = Y.entities.add([0, 0, 0], 1, 1, L, [0, 0, 0]);
+                        L.billboardMode = u.c.BILLBOARDMODE_ALL;
+                        L.alwaysSelectAsActiveMesh = !0;
+                        L.doNotSyncBoundingInfo = !0;
+                        L.renderingGroupId = 1;
+                        Y.ents.addComponent(P.planeEId, Y.ents.names.followsEntity, {
+                            entity: P.__id
+                        });
+            
+                        // Create the box plane
+                        const boxHeight = 1, // Height of the box
+                            boxWidth = L.scaling.x; // Match the nametag width
+                        const boxPlane = s.g.CreatePlane(`${P.__id}Box`, {
+                            height: boxHeight,
+                            width: boxWidth
+                        }, Y.rendering.getScene());
+            
+                        P.boxEId = Y.entities.add([0, -0.15, 0], 1, 1, boxPlane, [0, 0, 0]); // Offset box below nametag
+                        boxPlane.billboardMode = u.c.BILLBOARDMODE_ALL;
+                        boxPlane.alwaysSelectAsActiveMesh = !0;
+                        boxPlane.doNotSyncBoundingInfo = !0;
+                        boxPlane.renderingGroupId = 1;
+                        Y.ents.addComponent(P.boxEId, Y.ents.names.followsEntity, {
+                            entity: P.__id
+                        });
+            
+                        // Box material
+                        const boxMaterial = new i.d(`${P.__id}BoxMat`, Y.rendering.getScene());
+                        boxMaterial.diffuseColor = new q.b(0.2, 0.2, 0.8); // Blue box color
+                        boxMaterial.emissiveColor = new q.b(0.2, 0.2, 0.8);
+                        boxPlane.material = boxMaterial;
+            
+                        // Nametag material
+                        const W = new i.d(`${P.__id}NameTagMat`, Y.rendering.getScene());
+                        W.specularColor = new q.b(0, 0, 0);
+                        W.ambientColor = new q.b(1.3, 1.3, 1.3);
+                        W.emissiveColor = new q.b(1, 1, 1);
+                        W.diffuseTexture = O;
+                        L.material = W;
+            
+                        h(P);
+                        M(P, X);
+                        W.freeze();
+                        boxMaterial.freeze();
+            
+                        if (Y.ents.getGenericLifeformState(P.__id)) {
+                            Y.ents.getGenericLifeformState(P.__id).meshEnabledCombinator.forceUpdate();
+                        }
+                    }(P, L);
+            
+                    P._lastNametagWidth = C;
+                } else {
+                    M(P, L);
+                }
+            }
             const Z = 8;
             function H(P) {
                 var X, q;
