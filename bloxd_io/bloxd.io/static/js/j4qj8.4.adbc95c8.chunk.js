@@ -13426,7 +13426,7 @@
                 maxKickback: 0,
                 kickbackRate: 0,
                 kickbackDecreaseRate: 5e-6,
-                aimZoomFactor: 3.5
+                aimZoomFactor: 1.5
             },
             Minigun: {
                 gunType: "submachine",
