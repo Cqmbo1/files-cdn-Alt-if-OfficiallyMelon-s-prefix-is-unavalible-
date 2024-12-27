@@ -7544,7 +7544,7 @@
                         q += O + t(u);
                     }
                     P.update(!0);
-                })(X, Y.ents.getMeshData(P.planeEId).mesh.material.diffuseTexture);
+                })(X, Y.ents.getMeshData(P.planeEId).mesh.material.diffuseTexture)
             
                 // Return the function to obtain the color
                 return function obtainColor() {
