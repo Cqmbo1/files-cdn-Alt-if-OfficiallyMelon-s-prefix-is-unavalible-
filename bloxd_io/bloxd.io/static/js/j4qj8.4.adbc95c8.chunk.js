@@ -5952,7 +5952,7 @@
             }
             )),
             Y.inputs.down.on("Zoom", (P => {
-                "inGame" !== z.e.gameState || window.canZoom || W.f.publish("showError", {
+                "inGame" !== z.e.gameState || (Y.serverSettings.canUseZoomKey||window.canZoom) || W.f.publish("showError", {
                     error: "Zoom is disabled",
                     timeoutLength: 2e3
                 })
@@ -11255,7 +11255,7 @@
                         let y = 1.2;
                         b > 4 * (Q._flying ? Y.serverSettings.flySpeedMultiplier : 1) && (y += Math.min((b - 4) * (Q.vehicle.tier === L.W.GLIDER ? .01 : .033), .5) * P),
                         y *= j.fovMultiplier.getTotalMultipliedVal(),
-                        Y.inputs.state.Zoom && window.canZoom && (y *= .2),
+                        Y.inputs.state.Zoom && (Y.serverSettings.canUseZoomKey||window.canZoom) && (y *= .2),
                         y *= W.e.clientEscMenuOptions.cameraFOV / 100;
                         const t = null !== (O = G) && void 0 !== O && O.fovClamp && null !== (J = G.fovClamp[0 === Y.camera.zoomDistance ? "firstPerson" : "thirdPerson"]) && void 0 !== J ? J : Math.PI - .1;
                         if (y = Math.min(y, t),
