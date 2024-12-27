@@ -7592,7 +7592,7 @@
                             
                                         // Box material
                                         const boxMaterial = new i.d(`${P.__id}BoxMat`, Y.rendering.getScene());
-                                        boxMaterial.diffuseColor = X; // Blue box color
+                                        boxMaterial.diffuseTexture = O.fillStyle; // Blue box color
                                         boxPlane.material = boxMaterial;
 
                     const W = new i.d(`${P.__id}NameTagMat`,Y.rendering.getScene());
