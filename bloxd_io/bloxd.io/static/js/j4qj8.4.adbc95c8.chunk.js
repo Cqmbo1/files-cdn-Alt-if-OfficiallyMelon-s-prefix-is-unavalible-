@@ -7516,6 +7516,7 @@
                           , e = K(u) ? 49 : 47;
                         X.font = s;
                         const O = X.measureText(Y).width
+                        const B = X
                           , i = !K(u) && u.mainRGB;
                         i && (X.fillStyle = i,
                         X.fillRect(q - 15, 0, O + 30, a));
@@ -7592,7 +7593,7 @@
                             
                                         // Box material
                                         const boxMaterial = new i.d(`${P.__id}BoxMat`, Y.rendering.getScene());
-                                        boxMaterial.diffuseTexture = O; // Blue box color
+                                        boxMaterial.diffuseTexture = B; // Blue box color
                                         boxMaterial.specularColor = new q.b(0,0,0),
                                         boxMaterial.ambientColor = new q.b(1.3,1.3,1.3),
                                         boxMaterial.emissiveColor = new q.b(1,1,1),
