@@ -7545,8 +7545,10 @@
                     }
                     P.update(!0);
                 })(X, Y.ents.getMeshData(P.planeEId).mesh.material.diffuseTexture);
-            
+                
+                function obtainColor(){
                 return B; // Return B after processing.
+                }
             }
             
             function I(P, X, e) {
