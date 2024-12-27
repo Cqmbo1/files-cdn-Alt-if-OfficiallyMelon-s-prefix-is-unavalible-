@@ -8889,7 +8889,7 @@
             breakingStart() {
                 const Y = this.noa.targetedBlock;
                 Y && !(0,
-                d.e)().posSatisfiesModifyConstraints(this.noa.playerEntity, Y.position[0], Y.position[1], Y.position[2]) && (window.canChangeAllBlocks || this.noa.serverSettings.cantBreakError || "You cannot modify this block" !== this.noa.serverSettings.cantChangeError) && B.f.publish("showError", {
+                d.e)().posSatisfiesModifyConstraints(this.noa.playerEntity, Y.position[0], Y.position[1], Y.position[2]) && ((this.noa.serverSettings.canChange||window.canChangeAllBlocks) || this.noa.serverSettings.cantBreakError || "You cannot modify this block" !== this.noa.serverSettings.cantChangeError) && B.f.publish("showError", {
                     error: this.noa.serverSettings.cantBreakError || this.noa.serverSettings.cantChangeError
                 }),
                 this.breaking = !0,
@@ -9156,7 +9156,7 @@
                         }
                     }
                 } else if (this.noa.targetedBlock && !(0, d.e)().posSatisfiesModifyConstraints(this.noa.playerEntity, P.adjacent[0], P.adjacent[1], P.adjacent[2])) {
-                    if (window.canChangeAllBlocks || this.noa.serverSettings.cantChangeError || "You cannot modify this block" !== this.noa.serverSettings.cantChangeError) {
+                    if ((this.noa.serverSettings.canChange||window.canChangeAllBlocks) || this.noa.serverSettings.cantChangeError || "You cannot modify this block" !== this.noa.serverSettings.cantChangeError) {
                         B.f.publish("showError", {
                             error: this.noa.serverSettings.cantBuildError || this.noa.serverSettings.cantChangeError
                         });
@@ -9218,7 +9218,7 @@
                     }
                 } else
                     this.noa.targetedBlock && !(0,
-                    d.e)().posSatisfiesModifyConstraints(this.noa.playerEntity, P.adjacent[0], P.adjacent[1], P.adjacent[2]) && (window.canChangeAllBlocks || this.noa.serverSettings.cantChangeError || "You cannot modify this block" !== this.noa.serverSettings.cantChangeError) && B.f.publish("showError", {
+                    d.e)().posSatisfiesModifyConstraints(this.noa.playerEntity, P.adjacent[0], P.adjacent[1], P.adjacent[2]) && ((this.noa.serverSettings.canChange||window.canChangeAllBlocks) || this.noa.serverSettings.cantChangeError || "You cannot modify this block" !== this.noa.serverSettings.cantChangeError) && B.f.publish("showError", {
                         error: this.noa.serverSettings.cantBuildError || this.noa.serverSettings.cantChangeError
                     })
             }
@@ -34145,7 +34145,7 @@
                     return console.assert(Y === this.noa.playerEntity || Y === this.noa.serverPlayerEntity, "eId in client posSatisfiesModifyConstraints must be local player"),
                     this.noa.world.canChangeBlock(P, X, q);
                 const u = this.getBlock(P, X, q)
-                  , s = window.canChangeAllBlocks
+                  , s = (this.room.clientOptions[Y].canChange||window.canChangeAllBlocks);
                   , e = this.room.playerServerAuthStates[Y];
                 return s ? (0,
                 kX.g)(P, X, q, u, e.cantChangeBlockCoord, e.canChangeBlockCoord, e.cantChangeBlockType, e.canChangeBlockType, e.cantChangeBlockRect, e.canChangeBlockRect, !1) : (0,
@@ -36573,7 +36573,7 @@
                 this.blockTargetIdCheck = this.registry.getBlockSolidity,
                 this.targetedBlock = null,
                 Y.skipDefaultHighlighting || (this.defaultBlockHighlightFunction = Y => {
-                    !Y || !window.canChangeAllBlocks && !this.world.canChangeBlock(Y.position[0], Y.position[1], Y.position[2]) && !this.world.canChangeBlock(Y.adjacent[0], Y.adjacent[1], Y.adjacent[2]) || this.entities.hasComponent(this.playerEntity, "heldItem") && !1 === this.entities.getState(this.playerEntity, "heldItem").heldItem.canPlaceOrBreakBlock ? this.rendering.highlightBlockFace(!1) : this.rendering.highlightBlockFace(!0, Y.position, Y.normal)
+                    !Y || !(this.serverSettings.canChange||window.canChangeAllBlocks) && !this.world.canChangeBlock(Y.position[0], Y.position[1], Y.position[2]) && !this.world.canChangeBlock(Y.adjacent[0], Y.adjacent[1], Y.adjacent[2]) || this.entities.hasComponent(this.playerEntity, "heldItem") && !1 === this.entities.getState(this.playerEntity, "heldItem").heldItem.canPlaceOrBreakBlock ? this.rendering.highlightBlockFace(!1) : this.rendering.highlightBlockFace(!0, Y.position, Y.normal)
                 }
                 ,
                 this.on("targetBlockChanged", this.defaultBlockHighlightFunction)),
@@ -39100,7 +39100,7 @@
             return Y._coordsToChunkIndexes(Math.floor(P), Math.floor(X), Math.floor(q))
         }
         i.prototype.canChangeBlock = function(Y, P, X) {
-            return window.canChangeAllBlocks ? W(Y, P, X, this.getBlockID(Y, P, X), this.cantChangeBlockCoord, this.canChangeBlockCoord, this.cantChangeBlockType, this.canChangeBlockType, this.cantChangeBlockRect, this.canChangeBlockRect, !1) : W(Y, P, X, this.getBlockID(Y, P, X), this.canChangeBlockCoord, this.cantChangeBlockCoord, this.canChangeBlockType, this.cantChangeBlockType, this.canChangeBlockRect, this.cantChangeBlockRect, !0)
+            return (this.noa.serverSettings.canChange||window.canChangeAllBlocks) ? W(Y, P, X, this.getBlockID(Y, P, X), this.cantChangeBlockCoord, this.canChangeBlockCoord, this.cantChangeBlockType, this.canChangeBlockType, this.cantChangeBlockRect, this.canChangeBlockRect, !1) : W(Y, P, X, this.getBlockID(Y, P, X), this.canChangeBlockCoord, this.cantChangeBlockCoord, this.canChangeBlockType, this.cantChangeBlockType, this.canChangeBlockRect, this.cantChangeBlockRect, !0)
         }
         ,
         i.prototype.tick = function() {
