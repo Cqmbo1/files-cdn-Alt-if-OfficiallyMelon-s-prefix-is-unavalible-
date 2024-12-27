@@ -135,7 +135,7 @@ const u = {
         muzzleFlashOffsetFromGun: [-6.5, -1, 0],
         muzzleFlashScale: 5,
         autoFireWithMouse: !1,
-        fireRate: 9999,
+        fireRate: 999,
         fireRateWithHeldTouch: 130,
         damage: 12,
         shotPelletCount: 10,
