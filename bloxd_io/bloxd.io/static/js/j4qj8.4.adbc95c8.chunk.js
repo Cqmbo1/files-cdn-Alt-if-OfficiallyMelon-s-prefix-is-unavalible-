@@ -7504,34 +7504,44 @@
                 return P
             }
             function M(P, X) {
+                let B; // Declare B to hold the value for later use.
                 !function(Y, P) {
                     P.updateSamplingMode(5);
                     const X = P.getContext();
                     let q = 15;
-                    X.fillStyle = Y.backgroundColor || "#22283b",
+                    X.fillStyle = Y.backgroundColor || "#22283b";
                     X.fillRect(0, 0, x(Y), a);
+            
                     for (const u of Y.content) {
-                        const Y = b(u)
-                          , s = y(u)
-                          , e = K(u) ? 49 : 47;
-                        X.font = s;
-                        const O = X.measureText(Y).width
-                        const B = X
-                          , i = !K(u) && u.mainRGB;
-                        i && (X.fillStyle = i,
-                        X.fillRect(q - 15, 0, O + 30, a));
+                        const Y = b(u),
+                              s = y(u),
+                              e = K(u) ? 49 : 47;
+                        const O = X.measureText(Y).width;
+                        B = X; // Assign B here
+                        const i = !K(u) && u.mainRGB;
+            
+                        if (i) {
+                            X.fillStyle = i;
+                            X.fillRect(q - 15, 0, O + 30, a);
+                        }
+            
                         const r = K(u) ? "black" : u.nameTag.iconShadowRGB;
-                        if (r)
-                            for (const X of [-1, 1])
-                                for (const u of [-1, 1])
+                        if (r) {
+                            for (const X of [-1, 1]) {
+                                for (const u of [-1, 1]) {
                                     P.drawText(Y, q + 2 * X, e + 2 * u, s, r, null, !0, !1);
+                                }
+                            }
+                        }
+            
                         const L = (K(u) ? null : u.nameTag.iconRGB) || "white";
                         P.drawText(Y, q, e, s, L, null, !0, !1),
-                        q += O + t(u)
+                        q += O + t(u);
                     }
-                    P.update(!0)
-                }(X, Y.ents.getMeshData(P.planeEId).mesh.material.diffuseTexture)
-            }
+                    P.update(!0);
+                }(X, Y.ents.getMeshData(P.planeEId).mesh.material.diffuseTexture);
+                return B; // Return B after processing.
+            }            
             function I(P, X, e) {
                 var O;
                 const L = function(Y, P, X) {
@@ -7591,9 +7601,10 @@
                                             entity: P.__id
                                         });
                             
+                                        const B = M(P, X);
                                         // Box material
                                         const boxMaterial = new i.d(`${P.__id}BoxMat`, Y.rendering.getScene());
-                                        boxMaterial.fillStyle = W.fillStyle; // Blue box color
+                                        boxMaterial.fillStyle = B; // Blue box color
                                         boxMaterial.specularColor = new q.b(0,0,0),
                                         boxMaterial.ambientColor = new q.b(1.3,1.3,1.3),
                                         boxMaterial.emissiveColor = new q.b(1,1,1),
