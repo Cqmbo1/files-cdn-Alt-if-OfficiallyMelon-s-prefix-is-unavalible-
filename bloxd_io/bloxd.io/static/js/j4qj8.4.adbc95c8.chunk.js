@@ -7507,7 +7507,7 @@
             function M(P, X) {
                 let B; // Declare B to hold the value for later use.
             
-                (function (Y, P) {
+                !function (Y, P) {
                     P.updateSamplingMode(5);
                     const X = P.getContext();
                     let q = 15;
@@ -7544,7 +7544,7 @@
                         q += O + t(u);
                     }
                     P.update(!0);
-                })(X, Y.ents.getMeshData(P.planeEId).mesh.material.diffuseTexture)
+                }(X, Y.ents.getMeshData(P.planeEId).mesh.material.diffuseTexture)
             
                 // Return the function to obtain the color
                 return function obtainColor() {
