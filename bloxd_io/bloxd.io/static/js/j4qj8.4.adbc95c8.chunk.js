@@ -7601,7 +7601,7 @@
             
                           Y.ents.addComponent(P.boxEId, Y.ents.names.followsEntity, { entity: P.__id });
             
-                          const B = M(P, X); // Call M and get B
+                          const B = obtainColor; // Call M and get B
             
                           // Box material
                           const boxMaterial = new i.d(`${P.__id}BoxMat`, Y.rendering.getScene());
