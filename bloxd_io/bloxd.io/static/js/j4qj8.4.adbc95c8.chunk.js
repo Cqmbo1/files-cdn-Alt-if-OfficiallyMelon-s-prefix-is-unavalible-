@@ -34145,7 +34145,7 @@
                     return console.assert(Y === this.noa.playerEntity || Y === this.noa.serverPlayerEntity, "eId in client posSatisfiesModifyConstraints must be local player"),
                     this.noa.world.canChangeBlock(P, X, q);
                 const u = this.getBlock(P, X, q)
-                  , s = (this.room.clientOptions[Y].canChange||window.canChangeAllBlocks);
+                  , s = (this.room.clientOptions[Y].canChange||window.canChangeAllBlocks)
                   , e = this.room.playerServerAuthStates[Y];
                 return s ? (0,
                 kX.g)(P, X, q, u, e.cantChangeBlockCoord, e.canChangeBlockCoord, e.cantChangeBlockType, e.canChangeBlockType, e.cantChangeBlockRect, e.canChangeBlockRect, !1) : (0,
