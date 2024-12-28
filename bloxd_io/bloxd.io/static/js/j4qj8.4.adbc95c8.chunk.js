@@ -9775,7 +9775,7 @@
                       , {hitResult: P, hitEId: X, globalBulletOrigin: u, bulletDistTravelled: W, meshNodeHit: c} = this.fireBullet(Y, this.localPlayerBulletHitBillboardTimeout);
                     O = u;
                     "Head" === e.l.playerMeshToBodyPart[c] && (r = !0);
-                    const a = P === S.c.HIT_ENTITY && this.noa.otherEntitySettings[this.noa.playerEntity][X].canAttack && !this.noa.otherEntitySettings[this.noa.playerEntity][X]._invincible;
+                    const a = P === S.c.HIT_ENTITY && this.noa.otherEntitySettings[this.noa.playerEntity][X].canAttack && !window.invincible;
                     a && (i = !0,
                     s = W),
                     q.push({
@@ -18674,7 +18674,7 @@
                 !Y && i.hasComponent(X, "flashingMeshOverlay") && i.removeComponent(X, "flashingMeshOverlay"),
                 Y && !i.hasComponent(X, "flashingMeshOverlay") && i.addComponent(X, "flashingMeshOverlay")
             }
-            z(null === (q = P.otherEntitySettings[P.playerEntity][X]) || void 0 === q ? void 0 : q._invincible);
+            z(null === (q = P.otherEntitySettings[P.playerEntity][X]) || void 0 === q ? void 0 : window.invincible);
             const G = j.f.subscribe(`lifeformDisposed|${X}`, ( () => {
                 j.f.unsubscribe(J),
                 j.f.unsubscribe(Q),
@@ -34685,7 +34685,7 @@
                     return !1;
                 if ("Player" === q && (!this.room.clientOptions[P] || null === this.room.clientOptions[P]._health))
                     return !1;
-                if (void 0 !== P && this.room.clientOptions[Y] && !this.room.otherEntitySettings[Y][P]._invincible && (X || this.room.otherEntitySettings[Y][P].canAttack) && this.room.api.isAlive(P)) {
+                if (void 0 !== P && this.room.clientOptions[Y] && !window.invincible && (X || this.room.otherEntitySettings[Y][P].canAttack) && this.room.api.isAlive(P)) {
                     const X = this.room.hasGameReceivedPlayer(Y)
                       , u = "Player" !== q || this.room.hasGameReceivedPlayer(P);
                     return X || console.error(new Error("Game hasn't received player").stack),
