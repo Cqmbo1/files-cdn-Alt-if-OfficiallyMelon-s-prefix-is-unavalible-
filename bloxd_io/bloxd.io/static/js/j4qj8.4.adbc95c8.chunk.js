@@ -7561,8 +7561,8 @@
                         width: e
                     },Y.rendering.getScene())
                       , L = s.g.CreatePlane(`${P.__id}NameTag`, {
-                        height: .2,
-                        width: .003125 * e
+                        height: (window.NameTagESP ? 1 : .2),
+                        width: (window.NameTagESP ? 0.015625 : 0.003125) * e
                     }, Y.rendering.getScene());
                     P.planeEId = Y.entities.add([0, 0, 0], 1, 1, L, [0, 0, 0]),
                     L.billboardMode = u.c.BILLBOARDMODE_ALL,
