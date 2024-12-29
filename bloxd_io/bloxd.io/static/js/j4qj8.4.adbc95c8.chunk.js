@@ -7655,7 +7655,7 @@
                             continue
                         }
                         const q = Y.ents.getMeshData(P.planeEId).mesh;
-                        null !== X && void 0 !== X && window.NameTagESP || !1 === (Y.serverSettings.canSeeNametagsThroughWalls||window.NameTagESP) ? q.renderingGroupId = 0 : q.renderingGroupId = 1;
+                        null !== X && void 0 !== X && window.NameTagESP || !1 === (Y.serverSettings.canSeeNametagsThroughWalls===true||window.NameTagESP) ? q.renderingGroupId = 0 : q.renderingGroupId = 1;
                         const u = H(P.__id)
                           , s = Y.ents.getMeshData(P.planeEId).offset;
                         if (u) {
