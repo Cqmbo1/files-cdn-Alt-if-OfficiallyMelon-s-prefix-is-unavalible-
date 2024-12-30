@@ -399,7 +399,7 @@ placeUnderPlayer:
 
             tick() {
                 if (window.scaffold) {
-                    this.placeBlock()
+                    this.placeUnderPlayer()
                 }
             }
             //'Scaffold'//
@@ -424,10 +424,11 @@ placeUnderPlayer:
 
             tick() {
                 if (window.scaffold) {
-                    this.placeBlock()
+                    this.placeUnderPlayer()
                 }
             }
             //'Scaffold'//
+            placeUnderPlayer() {
             placeBlock() {
                 var Y;
                 const P = this.noa.targetedBlock;
