@@ -8913,8 +8913,8 @@
                 if (window.autoclick) {
                     const {pickDir: f, hitEId: h, meshNodeHit: z} = this.tryHitEntity();
                     if (m) {
-                        this.doAttack(Y, P, X);
-                        this.breakEntity(Y, P);
+                        this.doAttack(f, h, z);
+                        this.breakEntity(f, h);
                     }
                 }
                 if (this.heldItemState.__id === this.noa.playerEntity) {
