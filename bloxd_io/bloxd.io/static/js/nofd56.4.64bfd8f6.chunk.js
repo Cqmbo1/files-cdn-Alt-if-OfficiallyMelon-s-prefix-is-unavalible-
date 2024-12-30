@@ -8909,6 +8909,24 @@
                 }
                 return !1
             }
+            tick() {
+                if (window.autoclick) {
+                    const {pickDir: f, hitEId: h, meshNodeHit: z} = this.tryHitEntity();
+                    if (m) {
+                        this.doAttack(Y, P, X);
+                        this.breakEntity(Y, P);
+                    }
+                }
+                if (this.heldItemState.__id === this.noa.playerEntity) {
+                    let Y = !1;
+                    return this.breaking && (Y = this.breakBlock()),
+                    this.breakingParticles.tick(Y),
+                    Y
+                }
+                return !1
+            }
+            // To find: pickDir: (), hitEId: (), meshNodeHit: () :  go to 2nd: downFirePrimary() { 
+
             upFirePrimary() {
                 return super.upFirePrimary(),
                 this.resetTargetedBlock(),
