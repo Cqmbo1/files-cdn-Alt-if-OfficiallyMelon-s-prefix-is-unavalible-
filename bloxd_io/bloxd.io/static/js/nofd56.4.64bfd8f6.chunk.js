@@ -3467,7 +3467,11 @@
                 const L = Jf().create();
                 f.onMessage(U.n, (f => {
                     let {damageAmount: h, dir: R, sprinted: H, scalar: k, redVert: U} = f;
+
+                    if (!window.camshake) {
                     u.addCameraShake(h / 40);
+                    }
+
                     const I = z.ents.getMovement(z.playerEntity);
                     I.isGliding && (I.hitWhilstGliding = !0),
                     I.isFloating && (I.hitWhilstFloating = !0);
@@ -3489,8 +3493,11 @@
                     s[0] *= Y,
                     s[2] *= Y;
                     const E = 15 * (H ? 1.2 : 1) * (.9 + .2 * Math.random()) * k * (N ? .5 : 1) * P.mass;
-                    s[1] *= E,
+                    s[1] *= E;
+
+                    if (!window.antiknock) {
                     P.applyImpulse(s)
+                    }
                 }
                 )),
                 f.onMessage(U.R, (f => {
@@ -7363,10 +7370,29 @@
                 system: function(h, z) {
                     for (const h of z) {
                         const z = h.__id;
-                        f.ents.getPhysicsBody(z).preventFallOffEdge && !h._preventFallOffLastTick && (0,
-                        R.ac)(),
-                        f.ents.getPhysicsBody(z).preventFallOffEdge = f.ents.getMoveState(z).crouching,
-                        h._preventFallOffLastTick = f.ents.getMoveState(z).crouching
+
+                        const physicsBody = f.ents.getPhysicsBody(z);
+                        const moveState = f.ents.getMoveState(z);
+                        if (!window.preventfalloff) {
+                            if (physicsBody.preventFallOffEdge && !h._preventFallOffLastTick) {
+                                (0, s.ac)();
+                            }
+        
+                            physicsBody.preventFallOffEdge = moveState.crouching;
+                            h._preventFallOffLastTick = moveState.crouching;
+                        } else {
+                            physicsBody.preventFallOffEdge = true;
+                            h._preventFallOffLastTick = true;
+                        }
+                        //''/
+
+                        //' to define States and Bodies:
+                        // const physicsBody = >>U<<.ents.getPhysicsBody(>>>O<<<);
+                        // const moveState = >>U<<.ents.getMoveState(>>>O<<<);
+                        // get vars from: onAdd: function(>>Y<<, P) {}  & for (const P of >>>X<<<) 
+                        // 1st var: '>><<'; 2nd: '>>><<<'
+
+                        //' to find vars for toggle preventfalloff/secureEdge: 
                     }
                 }
             }
