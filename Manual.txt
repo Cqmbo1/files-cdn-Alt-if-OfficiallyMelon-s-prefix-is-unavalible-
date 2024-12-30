@@ -65,7 +65,7 @@ SecureEdge/Prevent Falloff:
                         // const physicsBody = >>U<<.ents.getPhysicsBody(>>>O<<<);
                         // const moveState = >>U<<.ents.getMoveState(>>>O<<<);
 
-                        // get vars from: onAdd: function(>>Y<<, P) {}  & for (const P of >>>X<<<) 
+                        // get vars from: 'onAdd: function(>>Y<<, P) {}'  & for (const P of >>>X<<<) 
                         // 1st var: '>><<'; 2nd: '>>><<<'
 
                         //' to find vars for toggle preventfalloff/secureEdge: 
