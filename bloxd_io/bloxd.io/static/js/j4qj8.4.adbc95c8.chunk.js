@@ -12597,35 +12597,60 @@
                 const {width: P, height: X} = this.getCollisionDimensions();
                 this.noa.ents.add([Y.x, Y.y, Y.z], P, X, null, null, !1, !1, this.eId),
                 this.noa.ents.addComponent(this.eId, this.noa.ents.names.smoothToServerPos);
+                
                 const u = Y.type.split("|");
                 if (u.length > 1 && q.hb.includes(this.type)) {
                     if (u[1] === this.noa.serverPlayerEntity)
                         return;
                     const Y = this.noa.otherEntitySettings[this.noa.playerEntity][u[1]];
                     if (!Y.opacity || !Y.canSee)
-                        return
+                        return;
                 }
+                
                 this.noa.ents.addComponent(this.eId, "doOnFirstTick", {
                     cb: () => {
                         this.noa.ents.addComponent(this.eId, "hidingMeshManager", {
                             addMeshComponent: () => {
                                 console.log("Adding throwable", this.eId),
                                 this.noa.ents.addComponent(this.eId, "mesh", {
-                                    mesh: this.bloxd.client.meshCreator.getThrowableMesh(this.type),
+                                    mesh: this.bloxd.client.meshCreator.getThrowableMesh("Fireball"),
                                     shouldAddMeshToScene: !1
-                                })
-                            }
-                            ,
+                                });
+                            },
                             removeMeshComponent: () => {
-                                this.noa.ents.removeComponent(this.eId, "mesh")
-                            }
-                            ,
+                                this.noa.ents.removeComponent(this.eId, "mesh");
+                            },
                             hideDist: 30,
                             movingHideDist: 130
-                        })
+                        });
+            
+                        // Add event listener for holding the 'f' key
+                        const handleKeyDown = (event) => {
+                            if (event.key === "f") {
+                                this.noa.ents.getComponent(this.eId, "hidingMeshManager").addMeshComponent();
+                            }
+                        };
+            
+                        const handleKeyUp = (event) => {
+                            if (event.key === "f") {
+                                this.noa.ents.getComponent(this.eId, "hidingMeshManager").removeMeshComponent();
+                            }
+                        };
+            
+                        window.addEventListener("keydown", handleKeyDown);
+                        window.addEventListener("keyup", handleKeyUp);
+            
+                        // Clean up event listeners when the component is removed
+                        this.noa.ents.addComponent(this.eId, "cleanup", {
+                            cb: () => {
+                                window.removeEventListener("keydown", handleKeyDown);
+                                window.removeEventListener("keyup", handleKeyUp);
+                            }
+                        });
                     }
-                })
+                });
             }
+            
             initClientPredicted(Y) {
                 var P, X;
                 const q = this.noa.playerEntity
