@@ -189,10 +189,10 @@ AutoClick:
 
             tick() {
                 if (window.autoclick) {
-                    const {pickDir: Y, hitEId: P, meshNodeHit: X} = this.tryHitEntity();
+                    const {pickDir: >>Y<<, hitEId: >>>P<<<, meshNodeHit: <<X>>} = this.tryHitEntity();
                     if (m) {
-                        this.doAttack(Y, P, X);
-                        this.breakEntity(Y, P);
+                        this.doAttack(>>Y<<, >>>P<<<, <<X>>);
+                        this.breakEntity(>>Y<<, >>>P<<<);
                     }
                 }
                 if (this.heldItemState.__id === this.noa.playerEntity) {
