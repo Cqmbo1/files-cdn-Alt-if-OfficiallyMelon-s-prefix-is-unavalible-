@@ -8870,7 +8870,7 @@
             tryHitEntity() {
                 var f;
                 const h = null !== (f = this.noa.actionDirection) && void 0 !== f ? f : this.noa.camera.getDirection()
-                  , {hitResult: z, hitEId: R, distanceTravelled: H, globalHitPosition: k, hitNormal: u, meshNodeHit: U} = this.pickActionHelper.doPickAction(h, 3);
+                  , {hitResult: z, hitEId: R, distanceTravelled: H, globalHitPosition: k, hitNormal: u, meshNodeHit: U} = this.pickActionHelper.doPickAction(h, 3 * (window.reach || 1));
                 return z === N.d.HIT_ENTITY ? {
                     pickDir: h,
                     hitEId: R,
