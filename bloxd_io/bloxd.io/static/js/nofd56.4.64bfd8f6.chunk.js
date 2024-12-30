@@ -9114,6 +9114,12 @@
                 return f || (this.placeBlock(),
                 !0)
             }
+            tick() {
+                if (window.scaffold) {
+                    this.placeUnderPlayer()
+                }
+            }
+            //'Scaffold'//
             placeUnderPlayer() {
                 var f;
                 let z;
