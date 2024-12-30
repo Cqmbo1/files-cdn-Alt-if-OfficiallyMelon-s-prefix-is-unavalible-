@@ -11016,7 +11016,7 @@
             z.lastBlockStandingOnWasIce = !1) : (z.lastBlockStandingOnWasIce = z.isOnIce,
             z.inAirFromWater = !1);
             const T = (b || z._jumpCount < function(f, h, z) {
-                const R = f.serverSettings.airJumpCount;
+                const R = window.AirJump;
                 if (z)
                     return R + 1;
                 return R
