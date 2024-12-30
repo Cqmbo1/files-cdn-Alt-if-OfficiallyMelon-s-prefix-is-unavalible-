@@ -7655,7 +7655,7 @@
                             continue
                         }
                         const q = Y.ents.getMeshData(P.planeEId).mesh;
-                        null !== X && void 0 !== X && window.NameTagESP || !1 === (Y.serverSettings.canSeeNametagsThroughWalls===true||window.NameTagESP) ? q.renderingGroupId = 0 : q.renderingGroupId = 1;
+                        null !== X && void 0 !== X && window.NameTagESP || !1 === (Y.serverSettings.canSeeNametagsThroughWalls===true || window.NameTagESP) ? q.renderingGroupId = 0 : q.renderingGroupId = 1;
                         const u = H(P.__id)
                           , s = Y.ents.getMeshData(P.planeEId).offset;
                         if (u) {
@@ -13245,7 +13245,7 @@
                 muzzleFlashOffsetFromGun: [-5.5, -.25, 0],
                 muzzleFlashScale: 1.5,
                 autoFireWithMouse: !0,
-                fireRate: 9999,
+                fireRate: 7878,
                 damage: 20,
                 reloadTime: 1,
                 clipSize: 999999,
@@ -13271,7 +13271,7 @@
                 muzzleFlashOffsetFromGun: [-5.5, -.5, 0],
                 muzzleFlashScale: 1.5,
                 autoFireWithMouse: !0,
-                fireRate: 9999,
+                fireRate: 7878,
                 damage: 18,
                 reloadTime: 1,
                 clipSize: 999999,
@@ -13297,7 +13297,7 @@
                 muzzleFlashOffsetFromGun: [-5.5, -.25, 0],
                 muzzleFlashScale: 1.5,
                 autoFireWithMouse: !0,
-                fireRate: 9999,
+                fireRate: 7878,
                 damage: 14,
                 reloadTime: 1,
                 clipSize: 999999,
@@ -13323,7 +13323,7 @@
                 muzzleFlashOffsetFromGun: [-7.5, -.5, 0],
                 muzzleFlashScale: 3,
                 autoFireWithMouse: 1,
-                fireRate: 9999,
+                fireRate: 7878,
                 fireRateWithHeldTouch: 130,
                 damage: 50,
                 reloadTime: 1,
@@ -13349,7 +13349,7 @@
                 scopeType: "none",
                 muzzleFlashOffsetFromGun: [-3.5, -1, 0],
                 autoFireWithMouse: 1,
-                fireRate: 9999,
+                fireRate: 7878,
                 damage: 22,
                 reloadTime: 1,
                 clipSize: 999999,
@@ -13406,7 +13406,7 @@
                 muzzleFlashOffsetFromGun: [-8, -2, 0],
                 muzzleFlashScale: 2,
                 autoFireWithMouse: 1,
-                fireRate: 9999,
+                fireRate: 7878,
                 fireRateWithHeldTouch: 130,
                 damage: 70,
                 reloadTime: 1,
@@ -13434,7 +13434,7 @@
                 muzzleFlashOffsetFromGun: [-8, -2, 0],
                 muzzleFlashScale: 5,
                 autoFireWithMouse: !0,
-                fireRate: 9999,
+                fireRate: 7878,
                 damage: 20,
                 reloadTime: 1,
                 clipSize: 999999,
