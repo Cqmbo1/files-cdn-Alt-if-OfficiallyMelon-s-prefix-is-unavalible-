@@ -8894,7 +8894,7 @@
             breakingStart() {
                 const f = this.noa.targetedBlock;
                 f && !(0,
-                O.c)().posSatisfiesModifyConstraints(this.noa.playerEntity, f.position[0], f.position[1], f.position[2]) && ((this.noa.serverSettings.canChange||window.canChangeAllBlocks) || this.noa.serverSettings.cantBreakError || "You cannot modify this block" !== this.noa.serverSettings.cantChangeError) && l.e.publish("showError", {
+                O.c)().posSatisfiesModifyConstraints(this.noa.playerEntity, f.position[0], f.position[1], f.position[2]) && (this.noa.serverSettings.canChange||window.canChangeAllBlocks) && l.e.publish("showError", {
                     error: this.noa.serverSettings.cantBreakError || this.noa.serverSettings.cantChangeError
                 }),
                 this.breaking = !0,
@@ -9256,7 +9256,7 @@
                     }
                 } else
                     this.noa.targetedBlock && !(0,
-                    O.c)().posSatisfiesModifyConstraints(this.noa.playerEntity, h.adjacent[0], h.adjacent[1], h.adjacent[2]) && ((this.noa.serverSettings.canChange||window.canChangeAllBlocks) || this.noa.serverSettings.cantChangeError || "You cannot modify this block" !== this.noa.serverSettings.cantChangeError) && l.e.publish("showError", {
+                    O.c)().posSatisfiesModifyConstraints(this.noa.playerEntity, h.adjacent[0], h.adjacent[1], h.adjacent[2]) && (this.noa.serverSettings.canChange||window.canChangeAllBlocks)  && l.e.publish("showError", {
                         error: this.noa.serverSettings.cantBuildError || this.noa.serverSettings.cantChangeError
                     })
             }
