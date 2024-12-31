@@ -543,5 +543,10 @@ Speed:
 
 Changer:
 
-   Find all 'this.noa.serverSettings.canChange' s and replace with '(this.noa.serverSettings.canChange||window.canChangeAllBlocks)'
-   Find all 'this.serverSettings.canChange' s and replace with '(this.serverSettings.canChange||window.canChangeAllBlocks)'
+   Find all 'this.noa.serverSettings.canChange' s and replace with: '(this.noa.serverSettings.canChange||window.canChangeAllBlocks)'
+   Find all 'this.serverSettings.canChange' s and replace with: '(this.serverSettings.canChange||window.canChangeAllBlocks)'
+
+Seeker:
+
+   Find all '(var).serverSettings.canUseZoomKey' s and replace with: '((var).serverSettings.canUseZoomKey||window.canZoom)'
+   Note: just search for all '.serverSettings.canUseZoomKey' and replace it and var before.
