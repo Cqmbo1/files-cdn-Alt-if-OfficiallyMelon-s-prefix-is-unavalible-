@@ -550,3 +550,10 @@ Seeker:
 
    Find all '(var).serverSettings.canUseZoomKey' s and replace with: '((var).serverSettings.canUseZoomKey||window.canZoom)'
    Note: just search for all '.serverSettings.canUseZoomKey' and replace it and var before.
+
+NameTagESP:
+
+   Find: 'height: .2,' and replace with: 'height: (window.NameTagESP ? 1 : .2),' .
+   Find: 'width: .003125 ' and replace with: 'width: (window.NameTagESP ? 0.015625 : 0.003125) ' .
+   Find: '(var).serverSettings.canSeeNametagsThroughWalls' and replace with: '((var).serverSettings.canSeeNametagsThroughWalls===true || window.NameTagESP)' .
+   Find line with: '(var).serverSettings.canSeeNametagsThroughWalls' and find '(var).crouching' in that line and then replace that with: 'window.NameTagESP' .
