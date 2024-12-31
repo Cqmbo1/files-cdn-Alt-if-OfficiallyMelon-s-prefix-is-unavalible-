@@ -11618,6 +11618,20 @@
               , P = H.d[z.vehicle.type]
               , s = R.y[z.vehicle.type].getValues(z.vehicle.tier);
             h.jumping = !!u.jump;
+            Object.defineProperty(window, 'GlobalSpeed', {
+                get: function () {
+                    return this._globalSpeed;
+                },
+                set: function (value) {
+                    this._globalSpeed = value;
+                    I.walkingSpeed = value;
+                },
+                configurable: true
+            });
+        
+            if (typeof window._globalSpeed === 'undefined') {
+                window._globalSpeed = I.walkingSpeed;
+            }
             const Z = u.forward ? u.backward ? 0 : 1 : u.backward ? -1 : 0
               , N = u.right ? u.left ? 0 : 1 : u.left ? -1 : 0;
             k.d.clientEscMenuOptions.crouchIsToggle ? h.crouching = U.crouchToggled : (u.crouch ? h.crouching = !0 : h.crouching = !1,
