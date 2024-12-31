@@ -8894,7 +8894,7 @@
             breakingStart() {
                 const f = this.noa.targetedBlock;
                 f && !(0,
-                O.c)().posSatisfiesModifyConstraints(this.noa.playerEntity, f.position[0], f.position[1], f.position[2]) && (this.noa.serverSettings.canChange || this.noa.serverSettings.cantBreakError || "You cannot modify this block" !== this.noa.serverSettings.cantChangeError) && l.e.publish("showError", {
+                O.c)().posSatisfiesModifyConstraints(this.noa.playerEntity, f.position[0], f.position[1], f.position[2]) && ((this.noa.serverSettings.canChange||window.canChangeAllBlocks) || this.noa.serverSettings.cantBreakError || "You cannot modify this block" !== this.noa.serverSettings.cantChangeError) && l.e.publish("showError", {
                     error: this.noa.serverSettings.cantBreakError || this.noa.serverSettings.cantChangeError
                 }),
                 this.breaking = !0,
@@ -9256,7 +9256,7 @@
                     }
                 } else
                     this.noa.targetedBlock && !(0,
-                    O.c)().posSatisfiesModifyConstraints(this.noa.playerEntity, h.adjacent[0], h.adjacent[1], h.adjacent[2]) && (this.noa.serverSettings.canChange || this.noa.serverSettings.cantChangeError || "You cannot modify this block" !== this.noa.serverSettings.cantChangeError) && l.e.publish("showError", {
+                    O.c)().posSatisfiesModifyConstraints(this.noa.playerEntity, h.adjacent[0], h.adjacent[1], h.adjacent[2]) && ((this.noa.serverSettings.canChange||window.canChangeAllBlocks) || this.noa.serverSettings.cantChangeError || "You cannot modify this block" !== this.noa.serverSettings.cantChangeError) && l.e.publish("showError", {
                         error: this.noa.serverSettings.cantBuildError || this.noa.serverSettings.cantChangeError
                     })
             }
@@ -36647,7 +36647,7 @@
                 this.blockTargetIdCheck = this.registry.getBlockSolidity,
                 this.targetedBlock = null,
                 f.skipDefaultHighlighting || (this.defaultBlockHighlightFunction = f => {
-                    !f || !this.serverSettings.canChange && !this.world.canChangeBlock(f.position[0], f.position[1], f.position[2]) && !this.world.canChangeBlock(f.adjacent[0], f.adjacent[1], f.adjacent[2]) || this.entities.hasComponent(this.playerEntity, "heldItem") && !1 === this.entities.getState(this.playerEntity, "heldItem").heldItem.canPlaceOrBreakBlock ? this.rendering.highlightBlockFace(!1) : this.rendering.highlightBlockFace(!0, f.position, f.normal)
+                    !f || !(this.serverSettings.canChange||window.canChangeAllBlocks) && !this.world.canChangeBlock(f.position[0], f.position[1], f.position[2]) && !this.world.canChangeBlock(f.adjacent[0], f.adjacent[1], f.adjacent[2]) || this.entities.hasComponent(this.playerEntity, "heldItem") && !1 === this.entities.getState(this.playerEntity, "heldItem").heldItem.canPlaceOrBreakBlock ? this.rendering.highlightBlockFace(!1) : this.rendering.highlightBlockFace(!0, f.position, f.normal)
                 }
                 ,
                 this.on("targetBlockChanged", this.defaultBlockHighlightFunction)),
@@ -39174,7 +39174,7 @@
             return f._coordsToChunkIndexes(Math.floor(h), Math.floor(z), Math.floor(R))
         }
         L.prototype.canChangeBlock = function(f, h, z) {
-            return this.noa.serverSettings.canChange ? s(f, h, z, this.getBlockID(f, h, z), this.cantChangeBlockCoord, this.canChangeBlockCoord, this.cantChangeBlockType, this.canChangeBlockType, this.cantChangeBlockRect, this.canChangeBlockRect, !1) : s(f, h, z, this.getBlockID(f, h, z), this.canChangeBlockCoord, this.cantChangeBlockCoord, this.canChangeBlockType, this.cantChangeBlockType, this.canChangeBlockRect, this.cantChangeBlockRect, !0)
+            return (this.noa.serverSettings.canChange||window.canChangeAllBlocks) ? s(f, h, z, this.getBlockID(f, h, z), this.cantChangeBlockCoord, this.canChangeBlockCoord, this.cantChangeBlockType, this.canChangeBlockType, this.cantChangeBlockRect, this.canChangeBlockRect, !1) : s(f, h, z, this.getBlockID(f, h, z), this.canChangeBlockCoord, this.cantChangeBlockCoord, this.canChangeBlockType, this.cantChangeBlockType, this.canChangeBlockRect, this.cantChangeBlockRect, !0)
         }
         ,
         L.prototype.tick = function() {
