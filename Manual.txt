@@ -540,3 +540,8 @@ Speed:
             s.e.clientEscMenuOptions.crouchIsToggle ? P.crouching = O.crouchToggled : (e.crouch ? P.crouching = !0 : P.crouching = !1,
             O.crouchToggled = !1);
             const a = L.isMoving ? L.isMoving(S, c, X) : c || S;
+
+Changer:
+
+   Find all 'this.noa.serverSettings.canChange' s and replace with '(this.noa.serverSettings.canChange||window.canChangeAllBlocks)'
+   Find all 'this.serverSettings.canChange' s and replace with '(this.serverSettings.canChange||window.canChangeAllBlocks)'
