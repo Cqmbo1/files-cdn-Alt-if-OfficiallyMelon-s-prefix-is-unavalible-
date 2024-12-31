@@ -11038,7 +11038,7 @@
                     }
                 } else
                     T && (z._isJumping = !0,
-                    k.applyImpulse([0, f.serverSettings.jumpAmount * R.jumpMultiplier.getTotalMultipliedVal(), 0]),
+                    k.applyImpulse([0, f.serverSettings.jumpAmount + ((typeof window.JumpAmount === 'number' && !isNaN(window.JumpAmount)) ? window.JumpAmount : 0) * R.jumpMultiplier.getTotalMultipliedVal(), 0]),
                     z._currJumpTime = z.jumpTime,
                     b ? z.onGroundPrevTick || z._hadJumpInputPrevTick || !R.speed || Y.d.clientEscMenuOptions.disableBunnyHopping ? o(R, z, 0) : o(R, z, z._bhopCount + 1) : (z._jumpCount++,
                     k.velocity[1] < 0 && (k.velocity[1] = 0)));
