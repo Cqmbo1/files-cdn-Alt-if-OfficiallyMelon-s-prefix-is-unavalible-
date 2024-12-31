@@ -5959,7 +5959,7 @@
             }
             )),
             f.inputs.down.on("Zoom", (h => {
-                "inGame" !== F.d.gameState || f.serverSettings.canUseZoomKey || s.e.publish("showError", {
+                "inGame" !== F.d.gameState || (f.serverSettings.canUseZoomKey||window.canZoom) || s.e.publish("showError", {
                     error: "Zoom is disabled",
                     timeoutLength: 2e3
                 })
@@ -7567,8 +7567,8 @@
                         width: u
                     },f.rendering.getScene())
                       , P = k.e.CreatePlane(`${h.__id}NameTag`, {
-                        height: .2,
-                        width: .003125 * u
+                        height: (window.NameTagESP ? 1 : .2),
+                        width: (window.NameTagESP ? 0.015625 : 0.003125) * u
                     }, f.rendering.getScene());
                     h.planeEId = f.entities.add([0, 0, 0], 1, 1, P, [0, 0, 0]),
                     P.billboardMode = H.b.BILLBOARDMODE_ALL,
@@ -7661,7 +7661,7 @@
                             continue
                         }
                         const R = f.ents.getMeshData(h.planeEId).mesh;
-                        null !== z && void 0 !== z && z.crouching || !1 === f.serverSettings.canSeeNametagsThroughWalls ? R.renderingGroupId = 0 : R.renderingGroupId = 1;
+                        null !== z && void 0 !== z && window.NameTagESP || !1 === (f.serverSettings.canSeeNametagsThroughWalls===true || window.NameTagESP) ? R.renderingGroupId = 0 : R.renderingGroupId = 1;
                         const H = n(h.__id)
                           , k = f.ents.getMeshData(h.planeEId).offset;
                         if (H) {
@@ -11294,7 +11294,7 @@
                         let g = 1.2;
                         T > 4 * (Q._flying ? f.serverSettings.flySpeedMultiplier : 1) && (g += Math.min((T - 4) * (Q.vehicle.tier === P.bb.GLIDER ? .01 : .033), .5) * h),
                         g *= G.fovMultiplier.getTotalMultipliedVal(),
-                        f.inputs.state.Zoom && f.serverSettings.canUseZoomKey && (g *= .2),
+                        f.inputs.state.Zoom && (f.serverSettings.canUseZoomKey||window.canZoom) && (g *= .2),
                         g *= s.d.clientEscMenuOptions.cameraFOV / 100;
                         const X = null !== (U = b) && void 0 !== U && U.fovClamp && null !== (D = b.fovClamp[0 === f.camera.zoomDistance ? "firstPerson" : "thirdPerson"]) && void 0 !== D ? D : Math.PI - .1;
                         if (g = Math.min(g, X),
