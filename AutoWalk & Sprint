@@ -1,0 +1,120 @@
+// ==UserScript==
+// @name         AutoWalk & Sprint
+// @namespace    http://tampermonkey.net/
+// @version      2024-12-31
+// @description  try to take over the world!
+// @author       You
+// @match        https://*bloxd.io/*
+// @match        https://*staging.bloxd.io/*
+// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    let isHoldingW = '';
+let isKeepingHoldingW = false;
+
+const wKeyData = {
+    key: 'w',
+    code: 'KeyW',
+    keyCode: 87,
+    which: 87,
+    shiftKey: false,
+    ControlKey: false,
+    altKey: false,
+    metaKey: false,
+    repeat: false,
+    bubbles: true,
+    cancelable: true
+};
+
+const wDown = new KeyboardEvent('keydown', wKeyData);
+const wUp = new KeyboardEvent('keyup', wKeyData);
+
+document.addEventListener('keyup', e => {
+    if (e.code === 'KeyU') {
+        if (isHoldingW === '') {
+            isHoldingW = 'w';
+            isKeepingHoldingW = true;
+            document.dispatchEvent(wDown);
+        } else if (isHoldingW === 'w') {
+            isHoldingW = '';
+            isKeepingHoldingW = false;
+            document.dispatchEvent(wUp);
+        }
+    } else if (e.code === 'KeyW' && isHoldingW === 'w') {
+        if (isKeepingHoldingW) {
+            e.stopImmediatePropagation();
+            return;
+        }
+        isHoldingW = '';
+    }
+});
+
+document.addEventListener('keydown', e => {
+    if (e.code === 'KeyW' && isHoldingW === '') {
+        isHoldingW = 'w';
+    }
+});
+
+setInterval(() => {
+    if (isKeepingHoldingW) {
+        document.dispatchEvent(wDown);
+    }
+}, 100);
+
+let isSprinting = '';
+let isKeepingSprinting = false;
+
+const shiftKeyData = {
+    key: 'Shift',
+    code: 'ShiftLeft',
+    keyCode: 16,
+    which: 16,
+    shiftKey: false,
+    ControlKey: false,
+    altKey: false,
+    metaKey: false,
+    repeat: false,
+    bubbles: true,
+    cancelable: true
+};
+
+const shiftDown = new KeyboardEvent('keydown', shiftKeyData);
+const shiftUp = new KeyboardEvent('keyup', shiftKeyData);
+
+document.addEventListener('keyup', e => {
+    if (e.code === 'KeyU') {
+        if (isSprinting === '') {
+            isSprinting = 'shift';
+            isKeepingSprinting = true;
+            document.dispatchEvent(shiftDown);
+        } else if (isSprinting === 'shift') {
+            isSprinting = '';
+            isKeepingSprinting = false;
+            document.dispatchEvent(shiftUp);
+        }
+    } else if (e.code === 'ShiftLeft' && isSprinting === 'shift') {
+        if (isKeepingSprinting) {
+            e.stopImmediatePropagation();
+            return;
+        }
+        isSprinting = '';
+    }
+});
+
+document.addEventListener('keydown', e => {
+    if (e.code === 'ShiftLeft' && isSprinting === '') {
+        isSprinting = 'shift';
+    }
+});
+
+setInterval(() => {
+    if (isKeepingSprinting) {
+        document.dispatchEvent(shiftDown);
+    }
+}, 100);
+
+})();
