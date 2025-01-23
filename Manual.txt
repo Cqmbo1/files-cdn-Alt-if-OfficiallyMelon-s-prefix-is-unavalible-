@@ -190,7 +190,7 @@ AutoClick:
             tick() {
                 if (window.autoclick) {
                     const {pickDir: >>Y<<, hitEId: >>>P<<<, meshNodeHit: <<X>>} = this.tryHitEntity();
-                    if (m) {
+                    if (>>>P<<<) {
                         this.doAttack(>>Y<<, >>>P<<<, <<X>>);
                         this.breakEntity(>>Y<<, >>>P<<<);
                     }
